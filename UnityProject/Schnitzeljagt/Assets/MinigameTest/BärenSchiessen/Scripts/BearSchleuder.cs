@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Schleuder : MonoBehaviour {
+public class BearSchleuder : MonoBehaviour {
 
-    public GameObject Meat;
-    public GameObject Honey;
+    public GameObject Rock;
     public float mouseDistanceFactor;
     public float maxForce;
 
@@ -34,11 +33,11 @@ public class Schleuder : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
-            Rigidbody throwRb = Instantiate(Random.Range(0,2) == 0 ? Meat : Honey, transform.position, transform.rotation).GetComponent<Rigidbody>();
+            Rigidbody rockRb = Instantiate(Rock, transform.position, transform.rotation).GetComponent<Rigidbody>();
             ForceVector = -ForceVector;
             ForceVector.z = ForceVector.y;
             //print(ForceVector);
-            throwRb.AddForce(ForceVector);
+            rockRb.AddForce(ForceVector);
         }
 	}
 }
