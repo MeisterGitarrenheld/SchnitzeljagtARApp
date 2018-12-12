@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Sprechblase : MonoBehaviour {
-
-    public GameObject SpeechField;
+    
     public Transform SpeechCanvas;
 
     private List<string> rightTexts = new List<string>() {
@@ -26,39 +25,29 @@ public class Sprechblase : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         InstantiateRandomText();
+        transform.SetParent(transform.Find("Canvas"));
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3f, 3f), Random.Range(5f, 15f));
+        Destroy(gameObject, 10f);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        InstantiateRandomText();
-	}
-
     void InstantiateRandomText()
     {
         // Sprechfeld initialisieren und referenz auf das TextComponent setzen
-        Text text = Instantiate(SpeechField).GetComponent<Text>();
-
-        // Sprechfeld als kind vom Canvas setzen
-        text.transform.parent = SpeechCanvas;
-
+        Text text = GetComponentInChildren<Text>();
         // Den Text auswählen:
         string chosenText;
         if (Random.Range(0.0f, 100.0f) < 50.0f) // 50% Wahrscheinlichkeit für korrekten text
         {
             chosenText = rightTexts[Random.Range(0, rightTexts.Count)];
+            tag = "Sprechblase";
         }
         else
         {
             chosenText = incorrectTexts[Random.Range(0, incorrectTexts.Count)];
+            tag = "SprechblaseFalsch";
         }
 
         text.text = chosenText;
-    }
-
-    // Wenn die Sprechblase eingesammelt ist kannst du den korrekten text aus der Liste entfernen:
-    // Das kannst du auch in dem Script von der Truhe machen, bei OnTriggerEnter
-    void OnRightTextCollected(string correctText)
-    {
-        rightTexts.Remove(correctText);
     }
 }

@@ -7,12 +7,11 @@ public class Truhe : MonoBehaviour {
 
    
     public float MovementSpeed;
-    public float yPosition;
     public Text PointsText;
 
+    private float yPosition;
     private Rigidbody2D rb;
     private BoxCollider2D col;
-
     private int Points = 0;
 
 
@@ -27,18 +26,15 @@ public class Truhe : MonoBehaviour {
         //Points = 0;
 
         PointsText.text = "Points: " + Points.ToString();
-
+        yPosition = transform.position.y;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        float horizontalMovement = Input.GetAxis("Horizontal") * MovementSpeed;
-        Vector2 movement = new Vector2(horizontalMovement, -32);
+        float horizontalMovement = Input.GetAxis("Horizontal") * MovementSpeed * Time.deltaTime * 60f;
+        Vector2 movement = new Vector2(horizontalMovement, 0);
         rb.velocity = movement;
-
-        transform.position = new Vector2(transform.position.x, yPosition);
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
