@@ -15,7 +15,7 @@ public class Ziegel : MonoBehaviour
     // Use this for initialization
     void Start () {
         PointsText = GameObject.Find("Text").GetComponent<Text>();
-        PointsText.text = "Points: " + Points.ToString();
+        Points = int.Parse(PointsText.text.Substring(8));
         Destroy(gameObject, 5);
 	}
 
@@ -36,6 +36,8 @@ public class Ziegel : MonoBehaviour
         else if (collision.collider.tag == "Stair")
         {
             Points -= 5;
+            if (Points < 0)
+                Points = 0;
             print("-5");
             Destroy(gameObject);
             PointsText.text = "Points: " + Points.ToString();

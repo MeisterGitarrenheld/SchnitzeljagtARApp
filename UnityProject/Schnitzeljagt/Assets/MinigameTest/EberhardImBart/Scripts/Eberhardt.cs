@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class Eberhardt : MonoBehaviour {
 
     public float MaxMoveRange;
+    public float MoveSpeed = 1;
+    public float EbenenMultiplikator = 1.2f;
 
-    private float speed = 5;
+
+    private float speed;
     private Rigidbody rb;
     private int ebene = 1;
 
@@ -15,19 +18,21 @@ public class Eberhardt : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody>();
 
+        speed = MoveSpeed * EbenenMultiplikator * ebene;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (transform.position.x < -MaxMoveRange)
-            speed = 5 * ebene;
+            speed = MoveSpeed * EbenenMultiplikator * ebene;
         else if (transform.position.x > MaxMoveRange)
-            speed = -5 * ebene;
+            speed = -MoveSpeed * EbenenMultiplikator * ebene;
 
         transform.position += Vector3.right * speed * Time.deltaTime;
 
-	}
+    }
 
 
 
@@ -35,7 +40,7 @@ public class Eberhardt : MonoBehaviour {
     {
         ebene++;
         transform.position += Vector3.up * 0.6f;
-        transform.localScale *= 0.8f;
+        transform.position += Vector3.forward;
     }
 
 }
