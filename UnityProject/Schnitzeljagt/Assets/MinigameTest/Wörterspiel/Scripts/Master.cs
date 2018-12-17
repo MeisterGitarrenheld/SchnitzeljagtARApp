@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Master : MonoBehaviour
 {
@@ -7,6 +8,12 @@ public class Master : MonoBehaviour
     
     private float timer;
     private Transform ThrowingObject;
+
+
+    public List<string> usedWords = new List<string>()
+    {
+
+    };
 
     void Start()
     {

@@ -1,6 +1,12 @@
 ﻿<Properties StartupConfiguration="{8DAD5128-608D-9AC9-9E4F-F84D146D607F}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MinigameTest/Wörterspiel/Scripts/Truhe.cs">
+    <Files>
+      <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Master.cs" Line="2" Column="34" />
+      <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Sprechblase.cs" Line="23" Column="1" />
+      <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Truhe.cs" Line="10" Column="28" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

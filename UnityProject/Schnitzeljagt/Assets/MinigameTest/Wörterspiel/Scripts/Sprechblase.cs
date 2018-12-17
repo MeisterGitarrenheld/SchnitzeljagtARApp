@@ -41,11 +41,13 @@ public class Sprechblase : MonoBehaviour {
         {
             chosenText = rightTexts[Random.Range(0, rightTexts.Count)];
             tag = "Sprechblase";
+
         }
         else
         {
             chosenText = incorrectTexts[Random.Range(0, incorrectTexts.Count)];
             tag = "SprechblaseFalsch";
+           
         }
 
         text.text = chosenText;

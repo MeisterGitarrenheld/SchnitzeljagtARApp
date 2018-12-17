@@ -15,9 +15,6 @@ public class Truhe : MonoBehaviour {
     private int Points = 0;
 
 
-
-
-
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -40,14 +37,14 @@ public class Truhe : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Sprechblase") {
-            Points += 5;
-            print("+5");
+            Points += 50;
+            print("+50");
             Destroy(other.gameObject);
             PointsText.text = "Points: " + Points.ToString();
         }
         if(other.tag == "SprechblaseFalsch") {
-            Points -= 1;
-            print("-1");
+            Points -= 5;
+            print("-5");
             Destroy(other.gameObject);
             PointsText.text = "Points: " + Points.ToString();
         }
