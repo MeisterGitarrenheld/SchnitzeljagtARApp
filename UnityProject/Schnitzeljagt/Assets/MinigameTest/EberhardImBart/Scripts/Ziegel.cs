@@ -10,36 +10,30 @@ public class Ziegel : MonoBehaviour
     private int Points = 0;
     private int PointsToGet = 5;
     private float ebene;
-
-    public float ZPosition {get; private set;}
-    public float ZSpeed;
+    
 
     // Use this for initialization
     void Start () {
         PointsText = GameObject.Find("Text").GetComponent<Text>();
         PointsText.text = "Points: " + Points.ToString();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        ZPosition += ZSpeed * Time.deltaTime;
+        Destroy(gameObject, 5);
 	}
 
 
-    void OnTriggerEnter(Collider other)
+    
+    void OnCollisionEnter(Collision collision)
     {
         print("Collision");
-        if (other.tag == "Character")
+        if (collision.collider.tag == "Character")
         {
             Points += PointsToGet;
             PointsToGet += 5;
             print("+" + PointsToGet);
             Destroy(gameObject);
             PointsText.text = "Points: " + Points.ToString();
-            other.GetComponent<Eberhardt>().GoUpEbene();
-            print(ZPosition);
+            collision.collider.GetComponent<Eberhardt>().GoUpEbene();
         }
-        else if (other.tag == "Stair")
+        else if (collision.collider.tag == "Stair")
         {
             Points -= 5;
             print("-5");

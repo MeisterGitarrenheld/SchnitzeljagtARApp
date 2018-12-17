@@ -7,6 +7,8 @@ public class Sprechblase : MonoBehaviour {
     
     public Transform SpeechCanvas;
 
+    public List<string> TruhenWords;
+
     private List<string> rightTexts = new List<string>() {
         "Erinnerung", "Herz", "Leben", "Liebende", "sinnlos", "Schatten"
     };
@@ -27,7 +29,7 @@ public class Sprechblase : MonoBehaviour {
         InstantiateRandomText();
         transform.SetParent(transform.Find("Canvas"));
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3f, 3f), Random.Range(5f, 15f));
+        //GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3f, 0), Random.Range(5f, 0));
         Destroy(gameObject, 10f);
 	}
 	
@@ -36,10 +38,13 @@ public class Sprechblase : MonoBehaviour {
         // Sprechfeld initialisieren und referenz auf das TextComponent setzen
         Text text = GetComponentInChildren<Text>();
         // Den Text auswählen:
-        string chosenText;
+        string chosenText = "";
         if (Random.Range(0.0f, 100.0f) < 50.0f) // 50% Wahrscheinlichkeit für korrekten text
         {
-            chosenText = rightTexts[Random.Range(0, rightTexts.Count)];
+            foreach(string tW in TruhenWords)
+                rightTexts.Remove(tW);
+            if(rightTexts.Count > 0)
+                chosenText = rightTexts[Random.Range(0, rightTexts.Count)];
             tag = "Sprechblase";
 
         }
