@@ -7,7 +7,6 @@ public class GlobalGameManager : MonoBehaviour {
 
     public static GlobalGameManager Instance;
 
-
     private void Awake()
     {
         if(Instance != null)
@@ -19,12 +18,7 @@ public class GlobalGameManager : MonoBehaviour {
 
         Instance = this;
     }
-
-    void Update ()
-    {
-		
-	}
-
+    
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

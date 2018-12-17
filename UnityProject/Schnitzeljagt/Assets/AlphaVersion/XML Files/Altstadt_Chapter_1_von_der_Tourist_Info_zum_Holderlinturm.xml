@@ -1,0 +1,179 @@
+<quest>
+    <!-- Also ich habe die Charaktere (zumindest von den fun facts) ausgelagert. 
+    Sonst muss man bei jedem Event ja den Charakter neu auszeichnen ... Ist das okay so?
+    Könnte man das nicht für alle Chapters auch so machen? -->
+    <characters>
+        <character name="Eberhard_Guide" tag="EG"/>
+        <character name="Auktorialer_Guide" tag="AG"/>
+    </characters>
+    <Animations>
+        <Animation name="Verzweifelt" tag="0"/>
+        <Animation name="Froh" tag="1"/>
+        <!-- und was, wenn jemand ganz neutral ist? Dann hab ich das Attribut einfach weggelassen. Eberhard ist ziemlich neutral in diesem Dialog -->
+    </Animations>
+
+    <!-- Wie wollt ihr den Startpunkt deklariert haben? Ich hab ihn auch einfach mal als randomfacts gemacht ... -->
+    <randomfacts>
+        <fact>
+            <geopunkt name="Tourist_Information">
+                <Latitude>48.518612</Latitude>
+                <Longitude>9.058112</Longitude>
+                <Altitude>380</Altitude>
+            </geopunkt>
+            <text cTag="AG">Mögen die Spiele beginnen! Starte die Schnitzeljagd, indem du zur
+                Altstadt läufst.</text>
+            <!-- Bzw. ein anderer Text, den die andere Gruppe auch übernimmt. -->
+        </fact>
+        <fact>
+            <geopunkt name="Nach_links_zur_Altstadt">
+                <Latitude>48.519615</Latitude>
+                <Longitude>9.058174</Longitude>
+                <Altitude>380 </Altitude>
+            </geopunkt>
+            <text cTag="AG">Gehe hier nach links über die Straße. Dann hast du die Altstadt
+                erreicht.</text>
+            <!-- noch unklar, vielleicht doch von Eberhard gesprochen? -->
+        </fact>
+        <fact>
+            <geopunkt name="Altstadt_Schild">
+                <Latitude>48.519608</Latitude>
+                <Longitude>9.057949</Longitude>
+                <Altitude>376</Altitude>
+            </geopunkt>
+            <!-- Hier soll, wenn man am Schild angekommen ist, das Weinen von Hölderlin zu hören sein ... 
+            Ich weiß nicht so recht, wie ich die Sounds verlinken soll.
+            
+            Besonderheit bei diesem Event ist, dass es wiederkehrt. Man soll nicht die ganze Zeit Hölderlin durchheulen
+            hören, weil das sonst ziemlich nervt. Aber an vier hintereinanderfolgenden Geo-Punkten soll man den Sound erneut hönren.
+            Nur jedes Mal etwas lauter. Also quasi beim ersten Mal 25%, beim zweiten mal 50% usw. Ich habe das stupide als Prozent im Typattribut
+            angegeben ... wollt ihr für jedes Event dann eine neue ID? Was schlagt ihr vor? :D -->
+
+        </fact>
+        <fact>
+            <geopunkt name="links_halten_zur_Bursagasse">
+                <Latitude>48.5198</Latitude>
+                <Longitude>9.056739</Longitude>
+                <Altitude>386</Altitude>
+            </geopunkt>
+
+            <event id="H_Weinen_Sound" type="50%"
+                HREF="https://freesound.org/people/qubodup/sounds/200428/">
+                <text cTag="EG">Das scheint von der Bursagasse zu kommen. Hier müssen wir also nach
+                    links!</text>
+            </event>
+        </fact>
+        <fact>
+            <geopunkt name="nach_links_Treppen_runter">
+                <Latitude>48.51956</Latitude>
+                <Longitude>9.055798</Longitude>
+                <Altitude>381</Altitude>
+            </geopunkt>
+            <event id="H_Weinen_Sound" type="75%"
+                HREF="https://freesound.org/people/qubodup/sounds/200428/">
+                <text cTag="EG">Das kommt vom Hölderlinturm. Dann müssen wir hier links die Treppen
+                    nach unten.</text>
+            </event>
+        </fact>
+    </randomfacts>
+    
+    <chapter cNum="1" name="Hölderlinturm">
+        <geopunkt>
+            <Latitude>48.519363</Latitude>
+            <Longitude>9.055865</Longitude>
+            <Altitude>369</Altitude>
+        </geopunkt>
+        <!-- Info zum Spiel für euch:
+        Hölderlin leidet unter seiner psychischen Krankheit und kann seine Elegie nicht weiterschreiben. Die einzelnen Buchstaben der Worte sind ungeordnet. 
+        Er erscheint am oberen Fenster, beginnt einen Dialog mit Eberhard und wirft aus lauter Verzweiflung alle Worte hinaus. Am unteren Ende des Displays befindet sich eine Schatztruhe. 
+        Durch Ziehen kann man sie bewegen und die Worte auffangen und so einen Wortschatz erstellen, mit dem Hölderlin seine Elegie weiterführen kann. 
+        Hat man alle Worte gesammelt, erscheint ein Auszug aus seiner Elegie.
+        
+Insgesamt kann man 30 Punkte erlangen. Jedes richtige Wort (Erinnerung, Herz, Leben, Liebende, sinnlos, Schatten) bringt 5 Punkte. 
+Ein sinnloses Wort, das gefangen wird, bringt einen Minuspunkt. Pro richtiges Wort gibt es fünf falsch geschriebene, (mit Rechtschreibfehlern oder Buchstabendrehern) 
+insgesamt also 36 Worte. Sie sind auf Wortkarten geschrieben.
+
+Jedes Wort kann nur einmal vorkommen. Alle 0,5 bis 3 Sekunden wirft Hölderlin eine neue Karte aus dem Fenster, die per Zufall ausgewählt und nach links, 
+rechts, oder eher in die Mitte fallen. Auch die Position der Karte (waagrecht oder nach links oder rechts gekippt) ist zufällig.
+
+        Die 'Wortkarten' gibt es auf discord.-->
+        <dialog>
+            <!-- Text -->
+                <text num="1" cTag="AG">Du hast den Hölderlinturm erreicht, wie schön! Dieses
+                    wunderschöne Gebäude am Neckar ist ein markantes Wahrzeichen von Tübingen.
+                    Ursprünglich stellte er einen Teil der mittelalterlichen Stadtmauer dar. Erst ab
+                    dem 18. Jahrhundert wurde er als Wohnraum genutzt. Der Dichter Friedrich
+                    Hölderlin (1770-1843) verbrachte die zweite Hälfte seines Lebens von 1807 bis zu
+                    seinem Tod in diesem Turm. </text>
+                <text num="2" cTag="AG">Angeberwissen: Das Logo der Stadt verkörpert den
+                    Hölderlinturm. Das kleine 't' greift dessen Form auf.</text>
+        <event id="H_Weinen_Sound" type="100%"
+            HREF="https://freesound.org/people/qubodup/sounds/200428/">
+            <text cTag="EG">Von hier kommt also dieses schreckliche Weinen.</text>
+        </event>
+            
+            
+            <event id="H_Weinen_Sound" type="25%"
+                HREF="https://freesound.org/people/qubodup/sounds/200428/">
+                <text cTag="EG">Hörst du das auch? Da weint doch jemand! Es scheint von da vorne zu
+                    kommen. Lass uns mal nachsehen!</text>
+                <!-- Wie habt ihr euch die Steuerung gedacht? Woher weiß man, dass man geradeaus gehen muss? Erscheint ein Pfeil auf dem Display? -->
+            </event>
+            <plainText num="1" cTag="H" emo="0" geo="j">Ach</plainText>
+            <plainText num="2" cTag="EG" geo="j">Wer bist du denn und was seufzt du so
+                schwer?</plainText>
+            <plainText num="3" cTag="H" emo="0" geo="j">Ich bin Friedrich Hölderlin. Ein Dichter.
+                Und deswegen seufze ich auch so schwer. Ich habe eine Schreibblockade.</plainText>
+            <plainText num="4" cTag="EG" geo="j">Kann man dir helfen?</plainText>
+            <plainText num="5" cTag="H" emo="0" geo="j">Ach. Ich schreibe über die Erinnerung.
+                Kennst du dich in diesem Gebiet aus?</plainText>
+            <plainText num="6" cTag="EG" geo="j">Ich habe selbst Probleme mit der Erinnerung. Ich
+                habe große Teile meines Gedächtnisses verloren.</plainText>
+            <plainText num="7" cTag="H" emo="0" geo="j">Ach, wie schön.</plainText>
+            <plainText num="8" cTag="EG" geo="j">Das ist nicht schön. Ich will mich wieder
+                erinnern.</plainText>
+            <plainText num="9" cTag="H" emo="0" geo="j">Warum?</plainText>
+            <plainText num="10" cTag="EG" geo="j">Warum? Man muss sich doch an die Vergangenheit
+                erinnern, um zu wissen, wo die Zukunft hinführt.</plainText>
+            <plainText num="11" cTag="H" emo="0" geo="j">Ja, das meine ich auch. Die Bewahrung der
+                Erinnerung macht Liebe und ein lebenswertes Leben erst möglich. Aber wenn sie sich
+                auf traumatische Erlebnisse bezieht, wirkt sie auch zerstörerisch. Diese Ambiguität
+                will ich in meiner neusten Elegie festhalten, aber die Worte werden in meinen Kopf
+                nicht konkret. Die Buchstaben vermischen sich. Ich brauche Hilfe.</plainText>
+
+            <minispiel mId="Wortschatz">
+                <startText cTag="AG">Hilf Hölderlin dabei, seinen
+                    Wortschatz zu sortieren! Dazu musst du alle sinnhaften und korrekt geschriebenen
+                    Worte, die er verzweifelt aus dem Fenster wirft, in der Schatztruhe fangen. Mit
+                    jedem richtig gefangenen Wort erhältst du 5 Punkte. Ein falsches Wort zieht dir
+                    einen Punkt ab.</startText>
+                <!-- Es erscheint die komplette Strophe. Die Wörter aus dem Schatz hätten wir gerne hervorgehoben. Ich hab das
+                mal mit bold gemacht, ihr könnt das aber mit css gestalten, wie ihr wollt. -->
+                <gewonnenText num="1">Ach! wo bist du, <hi rend="bold">Liebende</hi>, nun? Sie haben
+                    mein Auge <br/> Mir genommen, mein <hi rend="bold">Herz</hi> hab ich verloren
+                    mit ihr. <br/> Darum irr ich umher, und wohl, wie die <hi rend="bold"
+                        >Schatten</hi>, so muß ich <br/>
+                    <hi rend="bold">Leben</hi> und <hi rend="bold">sinnlos</hi> dünkt lange das
+                    Übrige mir. <br/> Danken möcht ich, aber wofür? verzehret das Letzte <br/>
+                    Selbst die <hi rend="bold">Erinnerung</hi> nicht? nimmt von der Lippe denn nicht
+                    <br/> Bessere Rede mir der Schmerz, und lähmet ein Fluch nicht <br/> Mir die
+                    Sehnen und wirft, wo ich beginne, mich weg?
+                    <!-- Bitte darauf achten, dass die line breaks dann übernommen werden. Hab das html br Element benutzt - stimmt natürlich hier nicht, aber
+                    ich glaub, sonst kann man libe breaks nur mit tei kennzeichnen -->
+                </gewonnenText>
+                <gewonnenText num="2">Herzlichen Glückwunsch. Du hast Hölderlins Panikattacke
+                    beendet, Eberhards Erinnerung auf die Sprünge geholfen und {} Punkte
+                    gesammelt.</gewonnenText>
+            </minispiel>
+
+            <plainText num="12" cTag="H" emo="1" geo="j">Vielen Dank! Jetzt sehe ich wieder klar und
+                kann weiterschreiben. Ich fühle mich so erleichtert!</plainText>
+            <plainText num="13" cTag="EG" geo="j">Und ich erinnere mich wieder. Zumindest etwas.
+                Gibt es da nicht ein Haus, in dem so philosophiert wird, wie hier bei dir? Möchtest
+                du dir das mit mir anschauen, Hölderlin?</plainText>
+            <plainText num="14" cTag="H" emo="0" geo="j">Die Burse? Da gehe ich niemals wieder
+                hin!</plainText>
+            <!-- Hölderlin verschwindet wieder - kann man einen Pfeil zur Burse einfügen? -->
+        </dialog>
+    </chapter>
+</quest>
+

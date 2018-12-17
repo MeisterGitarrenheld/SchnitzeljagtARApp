@@ -5,7 +5,10 @@ using UnityEngine;
 public class GlobalLocationScript : MonoBehaviour
 {
 
-    
+    public GeoPoint GetCurrentLocation()
+    { 
+        return new GeoPoint(Input.location.lastData);
+    }
 
     IEnumerator Start()
     {
@@ -44,6 +47,6 @@ public class GlobalLocationScript : MonoBehaviour
         }
 
         // Stop service if there is no need to query location updates continuously
-        Input.location.Stop();
+        //Input.location.Stop();
     }
 }

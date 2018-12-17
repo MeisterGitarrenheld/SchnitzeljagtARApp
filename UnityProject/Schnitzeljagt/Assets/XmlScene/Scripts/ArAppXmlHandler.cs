@@ -4,14 +4,6 @@ using System.Xml;
 using System.IO;
 using UnityEngine;
 
-struct Character
-{
-
-}
-struct Chapter
-{
-
-}
 
 enum EventType
 {
