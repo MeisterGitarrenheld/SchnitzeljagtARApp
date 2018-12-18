@@ -11,11 +11,12 @@ public class BearGameMaster : MonoBehaviour {
     public bool[] LaneBlocked;
 
     private float timer;
-	
+    private float GameTimer;
+    private bool GameOver;
 
 	void Update ()
     {
-		if(timer < 0)
+		if(!GameOver && timer < 0)
         {
             int selectedLane = Random.Range(0, 3);
             if (LaneBlocked[selectedLane])
@@ -30,6 +31,14 @@ public class BearGameMaster : MonoBehaviour {
         }
 
         timer -= Time.deltaTime;
+
+        GameTimer += Time.deltaTime;
+
+        if(!GameOver && GameTimer > 100)
+        {
+            print("GameOver");
+            GameOver = true;
+        }
 	}
 
 

@@ -3,7 +3,8 @@
     Sonst muss man bei jedem Event ja den Charakter neu auszeichnen ... Ist das okay so?
     Könnte man das nicht für alle Chapters auch so machen? -->
     <characters>
-        <character name="Eberhard_Guide" tag="EG"/>
+        <character name="Eberhard_Guide" tag="EG"/>        
+        <character name="Eberhard_Guide" tag="H"/>
         <character name="Auktorialer_Guide" tag="AG"/>
     </characters>
     <Animations>

@@ -7,6 +7,8 @@ public class GlobalGameManager : MonoBehaviour {
 
     public static GlobalGameManager Instance;
 
+    public int SelectedChapter;
+
     private void Awake()
     {
         if(Instance != null)

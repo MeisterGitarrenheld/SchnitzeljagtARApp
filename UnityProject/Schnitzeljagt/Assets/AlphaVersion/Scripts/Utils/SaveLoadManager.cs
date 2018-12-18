@@ -7,7 +7,7 @@ public class SaveLoadManager : MonoBehaviour
     public int CurrentChapter { get; private set; }
     public int CurrentPoints { get; private set; }
 
-    void Start()
+    void Awake()
     {
 
     }

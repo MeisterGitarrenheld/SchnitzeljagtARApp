@@ -3,7 +3,8 @@
     Sonst muss man bei jedem Event ja den Charakter neu auszeichnen ... Ist das okay so?
     Könnte man das nicht für alle Chapters auch so machen? -->
     <characters>
-        <character name="Eberhard_Guide" tag="EG"/>
+        <character name="Eberhard_Guide" tag="EG"/>        
+        <character name="Hoelderlin" tag="H"/>
         <character name="Auktorialer_Guide" tag="AG"/>
     </characters>
     <Animations>
@@ -140,7 +141,7 @@ rechts, oder eher in die Mitte fallen. Auch die Position der Karte (waagrecht od
                 will ich in meiner neusten Elegie festhalten, aber die Worte werden in meinen Kopf
                 nicht konkret. Die Buchstaben vermischen sich. Ich brauche Hilfe.</plainText>
 
-            <minispiel mId="Wortschatz">
+            <minispiel num="12" mId="Wortschatz">
                 <startText cTag="AG">Hilf Hölderlin dabei, seinen
                     Wortschatz zu sortieren! Dazu musst du alle sinnhaften und korrekt geschriebenen
                     Worte, die er verzweifelt aus dem Fenster wirft, in der Schatztruhe fangen. Mit
@@ -165,12 +166,12 @@ rechts, oder eher in die Mitte fallen. Auch die Position der Karte (waagrecht od
                     gesammelt.</gewonnenText>
             </minispiel>
 
-            <plainText num="12" cTag="H" emo="1" geo="j">Vielen Dank! Jetzt sehe ich wieder klar und
+            <plainText num="13" cTag="H" emo="1" geo="j">Vielen Dank! Jetzt sehe ich wieder klar und
                 kann weiterschreiben. Ich fühle mich so erleichtert!</plainText>
-            <plainText num="13" cTag="EG" geo="j">Und ich erinnere mich wieder. Zumindest etwas.
+            <plainText num="14" cTag="EG" geo="j">Und ich erinnere mich wieder. Zumindest etwas.
                 Gibt es da nicht ein Haus, in dem so philosophiert wird, wie hier bei dir? Möchtest
                 du dir das mit mir anschauen, Hölderlin?</plainText>
-            <plainText num="14" cTag="H" emo="0" geo="j">Die Burse? Da gehe ich niemals wieder
+            <plainText num="15" cTag="H" emo="0" geo="j">Die Burse? Da gehe ich niemals wieder
                 hin!</plainText>
             <!-- Hölderlin verschwindet wieder - kann man einen Pfeil zur Burse einfügen? -->
         </dialog>

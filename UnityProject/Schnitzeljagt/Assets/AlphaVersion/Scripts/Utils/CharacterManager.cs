@@ -7,7 +7,7 @@ public class CharacterManager : MonoBehaviour
 
     public Dictionary<string, GameObject> Characters { get; private set; }
         
-    void Start()
+    void Awake()
     {
         Characters = new Dictionary<string, GameObject>();
     }

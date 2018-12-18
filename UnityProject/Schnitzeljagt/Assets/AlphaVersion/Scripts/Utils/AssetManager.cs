@@ -10,8 +10,14 @@ public class AssetManager : MonoBehaviour {
     {
         switch(name)
         {
-            case "":
+            case "Eberhard_Guide":
                 return Characters[0];
+                break;
+            case "Hoelderlin":
+                return Characters[1];
+                break;
+            case "Auktorialer_Guide":
+                return Characters[2];
                 break;
             default:
                 break;

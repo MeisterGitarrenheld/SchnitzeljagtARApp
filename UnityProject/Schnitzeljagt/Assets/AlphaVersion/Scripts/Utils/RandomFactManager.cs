@@ -9,7 +9,7 @@ public class RandomFactManager : MonoBehaviour
 
     private MainGameManager mgm;
 
-    void Start()
+    void Awake()
     {
         FactLocations = new Dictionary<GeoPoint, string>();
         mgm = MainGameManager.Instance;
