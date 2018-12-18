@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{8DAD5128-608D-9AC9-9E4F-F84D146D607F}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MinigameTest/Wörterspiel/Scripts/Sprechblase.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MinigameTest/Wörterspiel/Scripts/Master.cs">
     <Files>
-      <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Master.cs" Line="13" Column="4" />
+      <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Master.cs" Line="52" Column="51" />
       <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Sprechblase.cs" Line="42" Column="24" />
       <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Truhe.cs" Line="10" Column="28" />
     </Files>

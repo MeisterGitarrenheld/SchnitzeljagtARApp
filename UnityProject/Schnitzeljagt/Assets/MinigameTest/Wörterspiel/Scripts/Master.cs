@@ -49,7 +49,7 @@ public class Master : MonoBehaviour
             randTimer = Random.Range(3f, 5f);
         }
 
-        if(!gameOver && Truhe.UsedWords.Count >= 1)
+        if(!gameOver && Truhe.UsedWords.Count >= 6)
         {
             gameOver = true;
             Hoelderlin.enabled = false;
