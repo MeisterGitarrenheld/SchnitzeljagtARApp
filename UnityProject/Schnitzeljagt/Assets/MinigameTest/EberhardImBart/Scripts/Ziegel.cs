@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Ziegel : MonoBehaviour
 {
 
-    private Text PointsText;
+    public Text PointsText;
+
     private int Points = 0;
     private int PointsToGet = 5;
     private float ebene;
@@ -14,7 +15,7 @@ public class Ziegel : MonoBehaviour
 
     // Use this for initialization
     void Start () {
-        PointsText = GameObject.Find("Text").GetComponent<Text>();
+        PointsText = GameObject.Find("PointsText").GetComponent<Text>();
         Points = int.Parse(PointsText.text.Substring(8));
         Destroy(gameObject, 5);
 	}
