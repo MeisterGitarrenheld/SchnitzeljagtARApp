@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1141492423954834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.12}
+  m_LocalPosition: {x: 0, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,8 +52,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.9270532, y: 1.5071197, z: 1}
+  m_Center: {x: 0.15213597, y: -0.25355983, z: 0}
 --- !u!114 &114073663230267890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,6 +66,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 1
+  Good1: {fileID: 21300000, guid: 5b062068f62464f7daaecf143fd3238f, type: 3}
+  Good2: {fileID: 21300000, guid: 917d72c1b8a5e4da193ae58792a57cf7, type: 3}
+  Bad1: {fileID: 21300000, guid: e162a6c67919042c09608b4ba8c05328, type: 3}
+  Bad2: {fileID: 21300000, guid: e7419c7baace047ad8abb0796ee5eb6a, type: 3}
+  BadPercentage: 75
 --- !u!212 &212533195742567720
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,7 +106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5703faba96b5c2547a425d836fc7a457, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b062068f62464f7daaecf143fd3238f, type: 3}
   m_Color: {r: 0.8301887, g: 0.36246312, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

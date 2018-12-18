@@ -10,6 +10,7 @@ public class EBPlayer : MonoBehaviour {
 
     private Transform currentZiegel;
 
+    private Vector3 MaxSpeed;
 
     private Vector3 SpawnPosition;
 	// Use this for initialization
@@ -23,15 +24,20 @@ public class EBPlayer : MonoBehaviour {
             currentZiegel = Instantiate(Ziegel, 
                                         SpawnPosition, 
                                         Quaternion.identity).transform;
+            MaxSpeed = Vector3.zero;
         }
         if(currentZiegel != null && Input.GetMouseButton(0))
         {
             currentZiegel.position = SpawnPosition;
+            Vector3 velocity = Vector3.up * Input.GetAxis("Mouse Y") * velocityMultiplier + Vector3.right * Input.GetAxis("Mouse X") * velocityMultiplier + Vector3.forward * zGeschw;
+            if (velocity.magnitude > MaxSpeed.magnitude)
+                MaxSpeed = velocity;
         }
         if(currentZiegel != null && Input.GetMouseButtonUp(0))
         {
-            currentZiegel.GetComponent<Rigidbody>().velocity = Vector3.up * Input.GetAxis("Mouse Y") * velocityMultiplier + Vector3.right * Input.GetAxis("Mouse X") * velocityMultiplier + Vector3.forward * zGeschw;
+            currentZiegel.GetComponent<Rigidbody>().velocity = MaxSpeed;
             currentZiegel = null;
+            MaxSpeed = Vector3.zero;
         }
 	}
 }

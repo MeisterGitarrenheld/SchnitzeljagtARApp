@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BearSchleuder : MonoBehaviour {
 
-    public GameObject Rock;
+    public GameObject Meat;
+    public GameObject Honey;
     public float mouseDistanceFactor;
     public float maxForce;
 
@@ -12,14 +13,11 @@ public class BearSchleuder : MonoBehaviour {
     Vector3 OldMousePosition;
 
     private Vector3 ForceVector;
+    
 
 
-	void Start () {
-		
-	}
-	
-	
-	void Update () {
+    void Update()
+    {
         if (Input.GetMouseButtonDown(0))
             OldMousePosition = Input.mousePosition;
         if (Input.GetMouseButton(0))
@@ -33,11 +31,11 @@ public class BearSchleuder : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
-            Rigidbody rockRb = Instantiate(Rock, transform.position, transform.rotation).GetComponent<Rigidbody>();
+            Rigidbody throwRb = Instantiate(Random.Range(0, 2) == 0 ? Meat : Honey, transform.position, transform.rotation).GetComponent<Rigidbody>();
             ForceVector = -ForceVector;
             ForceVector.z = ForceVector.y;
             //print(ForceVector);
-            rockRb.AddForce(ForceVector);
+            throwRb.AddForce(ForceVector);
         }
-	}
+    }
 }

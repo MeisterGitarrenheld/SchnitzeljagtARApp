@@ -392,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 456528991}
   m_Layer: 0
-  m_Name: BoatSpawn3
+  m_Name: BearSpawn3
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -866,7 +866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1535854770}
   m_Layer: 0
-  m_Name: BoatSpawn1
+  m_Name: BearSpawn1
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -982,7 +982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1858097670}
   m_Layer: 0
-  m_Name: BoatSpawn2
+  m_Name: BearSpawn2
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2145308730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cb92c598ac3cc46aa87210b70c9bbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e2ee164152914844aeae916b2efd509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Meat: {fileID: 1964787226357822, guid: 14b8052f5bce575419e4c6f194413dfb, type: 2}

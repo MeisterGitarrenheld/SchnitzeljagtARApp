@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Schleuder : MonoBehaviour {
 
-    public GameObject Meat;
-    public GameObject Honey;
+    public GameObject Rock;
     public float mouseDistanceFactor;
     public float maxForce;
 
@@ -15,12 +14,14 @@ public class Schleuder : MonoBehaviour {
     private Vector3 ForceVector;
 
 
-	void Start () {
-		
-	}
-	
-	
-	void Update () {
+    void Start()
+    {
+
+    }
+
+
+    void Update()
+    {
         if (Input.GetMouseButtonDown(0))
             OldMousePosition = Input.mousePosition;
         if (Input.GetMouseButton(0))
@@ -34,11 +35,11 @@ public class Schleuder : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
-            Rigidbody throwRb = Instantiate(Random.Range(0,2) == 0 ? Meat : Honey, transform.position, transform.rotation).GetComponent<Rigidbody>();
+            Rigidbody rockRb = Instantiate(Rock, transform.position, transform.rotation).GetComponent<Rigidbody>();
             ForceVector = -ForceVector;
             ForceVector.z = ForceVector.y;
             //print(ForceVector);
-            throwRb.AddForce(ForceVector);
+            rockRb.AddForce(ForceVector);
         }
-	}
+    }
 }
