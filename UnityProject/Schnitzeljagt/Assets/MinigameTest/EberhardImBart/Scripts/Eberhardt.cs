@@ -38,7 +38,7 @@ public class Eberhardt : MonoBehaviour {
 
         transform.position += Vector3.right * speed * Time.deltaTime;
 
-        if (!gameOver && ebene == 2)
+        if (!gameOver && ebene == 10)
         {
             gameOver = true;
             StartCoroutine(EndGame());
