@@ -36,7 +36,7 @@ public class ChapterManager : MonoBehaviour
     [HideInInspector]
     public int SelectedChapter;
 
-    private int ChapterProgress;
+    private int ChapterProgress = 1;
     private MainGameManager mgm;
 
     void Awake()
@@ -48,7 +48,13 @@ public class ChapterManager : MonoBehaviour
         else
             SelectedChapter = 0;
     }
-    
+
+    private void Start()
+    {
+        SelectedChapter = mgm.SaveLoadManager.CurrentChapter;
+        ChapterProgress = mgm.SaveLoadManager.CurrentChapterProgress;
+    }
+
     public void AddChapter(Chapter chapter)
     {
         Chapters.Add(chapter);
@@ -58,6 +64,20 @@ public class ChapterManager : MonoBehaviour
     public void Progress()
     {
         //print(ChapterProgress);
+        if (SelectedChapter >= Chapters.Count)
+            return;
+
+        string won = PlayerPrefs.GetString("MGameState");
+
+        if (won.Equals("won"))
+        {
+            ChapterProgress++;
+            print("Hurra, you won the game.");
+        }
+        else if (won.Equals("lost"))
+            print("Oh No, you lost.");
+
+        PlayerPrefs.SetString("MGameState", "none");
 
         if (Chapters[SelectedChapter].pTexts.ContainsKey(ChapterProgress))
         {
@@ -71,10 +91,18 @@ public class ChapterManager : MonoBehaviour
         }
         else if (Chapters[SelectedChapter].mGame.ContainsKey(ChapterProgress))
         {
+            mgm.SaveLoadManager.SaveChapterProgress(SelectedChapter, 0, ChapterProgress);
             mgm.StartMiniGame(Chapters[SelectedChapter].mGame[ChapterProgress].miniSpielID);
+        }
+        else
+        {
+            ChapterProgress = 1;
+            SelectedChapter++;
         }
 
         ChapterProgress++;
     }
+
+    
 
 }

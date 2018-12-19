@@ -36,7 +36,9 @@ public class MainGameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)
+            || Input.GetMouseButtonDown(0)
+            || Input.touches.Length > 0)
             ChapterManager.Progress();
     }
 
@@ -48,11 +50,9 @@ public class MainGameManager : MonoBehaviour
 
     public void DisplayPlainText(string lText, string rText, GameObject lChar, GameObject rChar)
     {
-        //PlainTextContainer.GetChild(0).GetComponent<Image>().sprite = lChar.GetComponent<Image>().sprite;
-        //PlainTextContainer.GetChild(0).GetComponent<BouncePulse>().StartAnimating();
+        PlainTextContainer.gameObject.SetActive(true);
         PlainTextContainer.GetChild(1).GetComponent<Image>().sprite = rChar.GetComponent<Image>().sprite;
         PlainTextContainer.GetChild(1).GetComponent<BouncePulse>().StartAnimating();
-        //PlainTextContainer.GetChild(2).GetComponentInChildren<Text>().text = lText;
         PlainTextContainer.GetChild(3).GetComponentInChildren<Text>().text = rText;
 
     }
@@ -73,6 +73,24 @@ public class MainGameManager : MonoBehaviour
         {
             case "Wortschatz":
                 SceneManager.LoadScene(2);
+                break;
+            case "Boot":
+                SceneManager.LoadScene(3);
+                break;
+            case "Bären":
+                SceneManager.LoadScene(4);
+                break;
+            case "EberhardImBart":
+                SceneManager.LoadScene(5);
+                break;
+            case "FlowerPlucking":
+                SceneManager.LoadScene(6);
+                break;
+            case "Fragebogen":
+                SceneManager.LoadScene(7);
+                break;
+            case "Rathaus_quest":
+                SceneManager.LoadScene(8);
                 break;
             default: break;
         }

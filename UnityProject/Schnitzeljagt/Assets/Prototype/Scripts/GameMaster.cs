@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -18,12 +19,14 @@ public class GameMaster : MonoBehaviour {
     public Language DefaultLanguage;
     public Language SelectedLanguage { get; private set; }
 
+    private int selectedGame;
+
     private void Start()
     {
         Instance = this;
         if (SelectedLanguage != DefaultLanguage)
             SelectedLanguage = SelectedLanguage == Language.en ? Language.de : Language.en;
-        SetGameState(0);
+        //SetGameState(0);
     }
 
     public void SetGameState(int state)
@@ -57,6 +60,16 @@ public class GameMaster : MonoBehaviour {
         {
             lo.UpdateText();
         }
+    }
+
+    public void SetMiniGame(int game)
+    {
+        selectedGame = game;
+    }
+
+    public void StartMiniGame()
+    {
+        SceneManager.LoadScene(selectedGame);
     }
 
 }

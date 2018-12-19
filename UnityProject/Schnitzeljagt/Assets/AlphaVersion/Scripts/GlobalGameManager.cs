@@ -20,10 +20,20 @@ public class GlobalGameManager : MonoBehaviour {
 
         Instance = this;
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (SceneManager.GetActiveScene().buildIndex > 0)
+                SceneManager.LoadScene(0);
+            else
+                Application.Quit();
+        }
+    }
+
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
-
 }
