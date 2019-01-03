@@ -11,24 +11,28 @@ public class AVXmlLoader : MonoBehaviour
     MainGameManager mgm;
 
     XmlDocument xmlDocument;
-    string path;
+    TextAsset xmlAsset;
+
+    string xmlDocumentName;
 
     void Start()
     {
         mgm = MainGameManager.Instance;
-        path = Application.dataPath + "/AlphaVersion/Xml Files/" + "Altstadt_Chapter_1_von_der_Tourist_Info_zum_Holderlinturm" + ".xml";
+        xmlDocumentName = "Altstadt_Chapter_1_von_der_Tourist_Info_zum_Holderlinturm";
+
+        xmlAsset = (TextAsset)Resources.Load(xmlDocumentName, typeof(TextAsset));
         LoadXML();
     }
 
     void LoadXML()
     {
-        if (!File.Exists(path))
+        if (xmlAsset == null)
         {
-            print("Path: " + path + " does not exist.");
+            print("Path: " + xmlAsset + " does not exist.");
             return;
         }
         xmlDocument = new XmlDocument();
-        xmlDocument.Load(path);
+        xmlDocument.LoadXml(xmlAsset.text);
 
         XmlNodeList childNodes = xmlDocument.ChildNodes[0].ChildNodes;
         foreach (XmlNode node in childNodes)

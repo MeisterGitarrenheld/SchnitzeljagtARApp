@@ -82,7 +82,7 @@ public class ChapterManager : MonoBehaviour
         if (Chapters[SelectedChapter].pTexts.ContainsKey(ChapterProgress))
         {
             PlainText pText = Chapters[SelectedChapter].pTexts[ChapterProgress];
-            print("Text: " + pText.text);
+            //print("Text: " + pText.text);
             mgm.DisplayPlainText(pText.text, pText.text, mgm.CharacterManager.Characters[pText.charID], mgm.CharacterManager.Characters[pText.charID]);
         }
         else if (Chapters[SelectedChapter].events.ContainsKey(ChapterProgress))

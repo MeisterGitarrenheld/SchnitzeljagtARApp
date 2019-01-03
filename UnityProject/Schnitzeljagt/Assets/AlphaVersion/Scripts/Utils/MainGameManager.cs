@@ -36,9 +36,7 @@ public class MainGameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)
-            || Input.GetMouseButtonDown(0)
-            || Input.touches.Length > 0)
+        if (AVInputHandler.PointerDown())
             ChapterManager.Progress();
     }
 
