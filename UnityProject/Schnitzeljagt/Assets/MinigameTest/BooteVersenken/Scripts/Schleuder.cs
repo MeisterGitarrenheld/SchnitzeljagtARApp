@@ -22,9 +22,9 @@ public class Schleuder : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             OldMousePosition = Input.mousePosition;
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
         {
             MousePosition = Input.mousePosition;
 
@@ -33,7 +33,7 @@ public class Schleuder : MonoBehaviour {
             Debug.DrawLine(transform.position, transform.position - (ForceVector / 100f));
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
         {
             Rigidbody rockRb = Instantiate(Rock, transform.position, transform.rotation).GetComponent<Rigidbody>();
             ForceVector = -ForceVector;

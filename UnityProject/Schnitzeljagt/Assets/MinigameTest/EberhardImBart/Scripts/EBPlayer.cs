@@ -20,20 +20,21 @@ public class EBPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        {
             currentZiegel = Instantiate(Ziegel, 
                                         SpawnPosition, 
                                         Quaternion.identity).transform;
             MaxSpeed = Vector3.zero;
         }
-        if(currentZiegel != null && Input.GetMouseButton(0))
+        if(currentZiegel != null && (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)))
         {
             currentZiegel.position = SpawnPosition;
             Vector3 velocity = Vector3.up * Input.GetAxis("Mouse Y") * velocityMultiplier + Vector3.right * Input.GetAxis("Mouse X") * velocityMultiplier + Vector3.forward * zGeschw;
             if (velocity.magnitude > MaxSpeed.magnitude)
                 MaxSpeed = velocity;
         }
-        if(currentZiegel != null && Input.GetMouseButtonUp(0))
+        if(currentZiegel != null && (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)))
         {
             currentZiegel.GetComponent<Rigidbody>().velocity = MaxSpeed;
             currentZiegel = null;
