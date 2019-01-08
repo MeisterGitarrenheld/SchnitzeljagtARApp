@@ -34,6 +34,7 @@
                 <Longitude>9.057949</Longitude>
                 <Altitude>376</Altitude>
             </geopunkt>
+            <text>Fact</text>
         </fact>
         <fact>
             <geopunkt name="links_halten_zur_Bursagasse">
@@ -41,11 +42,9 @@
                 <Longitude>9.056739</Longitude>
                 <Altitude>386</Altitude>
             </geopunkt>
-
+            <text cTag="EG">Das scheint von der Bursagasse zu kommen. Hier müssen wir also nach links!</text>
             <event id="H_Weinen_Sound" type="50%"
                 HREF="https://freesound.org/people/qubodup/sounds/200428/">
-                <text cTag="EG">Das scheint von der Bursagasse zu kommen. Hier müssen wir also nach
-                    links!</text>
             </event>
         </fact>
         <fact>
@@ -54,10 +53,10 @@
                 <Longitude>9.055798</Longitude>
                 <Altitude>381</Altitude>
             </geopunkt>
+            <text cTag="EG">Das kommt vom Hölderlinturm. Dann müssen wir hier links die Treppen
+                nach unten.</text>
             <event id="H_Weinen_Sound" type="75%"
                 HREF="https://freesound.org/people/qubodup/sounds/200428/">
-                <text cTag="EG">Das kommt vom Hölderlinturm. Dann müssen wir hier links die Treppen
-                    nach unten.</text>
             </event>
         </fact>
     </randomfacts>

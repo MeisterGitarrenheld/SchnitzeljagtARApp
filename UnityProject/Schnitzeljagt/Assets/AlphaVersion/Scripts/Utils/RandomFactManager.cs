@@ -5,9 +5,12 @@ using UnityEngine;
 public class RandomFactManager : MonoBehaviour
 {
 
+    public float EventCheckTimer;
+
     public Dictionary<GeoPoint, string> FactLocations { get; private set; }
 
     private MainGameManager mgm;
+    private float evTimer;
 
     void Awake()
     {
@@ -17,11 +20,16 @@ public class RandomFactManager : MonoBehaviour
 
     void Update()
     {
-        foreach(GeoPoint gp in FactLocations.Keys)
+        if(evTimer <= 0)
         {
-            if (gp.Compare(mgm.GlobalLocationManager.GetCurrentLocation(), 10))
-                print(FactLocations[gp]);
+            foreach(GeoPoint gp in FactLocations.Keys)
+            {
+                if (gp.Compare(mgm.GlobalLocationManager.GetCurrentLocation(), 10))
+                    print(FactLocations[gp]);
+            }
+            evTimer = EventCheckTimer;
         }
+        evTimer -= Time.deltaTime;
     }
 
     public void AddLocation(GeoPoint location, string text)

@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2b3973013316640b5dc5b56ea36a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EventCheckTimer: 5
 --- !u!114 &72419640
 MonoBehaviour:
   m_ObjectHideFlags: 0

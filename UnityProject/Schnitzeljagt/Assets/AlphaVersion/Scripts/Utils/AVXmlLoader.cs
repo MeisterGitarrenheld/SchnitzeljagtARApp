@@ -57,8 +57,6 @@ public class AVXmlLoader : MonoBehaviour
                 node.Attributes["tag"].Value, 
                 mgm.AssetManager.GetCharacter(node.Attributes["name"].Value));
 
-        print(mgm.CharacterManager.Characters.Keys.Count);
-
     }
 
     void ParseAnimations(XmlNode animNode)
@@ -71,16 +69,40 @@ public class AVXmlLoader : MonoBehaviour
         //ToDo: RandomFactManager SetRandomFacts
         foreach (XmlNode fact in rndNode)
         {
+            XmlNode geoPoint = null;
+            XmlNode text = null;
+            foreach(XmlNode factChild in fact.ChildNodes)
+            {
+                if (factChild.Name.Equals("geopunkt"))
+                    geoPoint = factChild;
+                else if (factChild.Name.Equals("text"))
+                    text = factChild;
+            }
             try
             {
-                double lat = double.Parse(fact.ChildNodes[0].ChildNodes[0].Value);
-                double lon = double.Parse(fact.ChildNodes[0].ChildNodes[1].Value);
-                double alt = double.Parse(fact.ChildNodes[0].ChildNodes[2].Value);
-                mgm.RandomFactManager.AddLocation(new GeoPoint(lat, lon, alt), fact.ChildNodes[1].Value);
+                XmlNode longitude = null;
+                XmlNode latitude = null;
+                XmlNode altitude = null;
+
+                foreach (XmlNode geoChild in geoPoint.ChildNodes)
+                {
+                    if (geoChild.Name.Equals("Latitude"))
+                        latitude = geoChild;
+                    else if (geoChild.Name.Equals("Longitude"))
+                        longitude = geoChild;
+                    else if (geoChild.Name.Equals("Altitude"))
+                        altitude = geoChild;
+                }
+
+                double lat = double.Parse(latitude.InnerText);
+                double lon = double.Parse(longitude.InnerText);
+                double alt = double.Parse(altitude.InnerText);
+                mgm.RandomFactManager.AddLocation(new GeoPoint(lat, lon, alt), text.InnerText);
             }
             catch (Exception e)
             {
-
+                print("Random Fact not loaded.");
+                print(e.StackTrace);
             }
         }
     }
@@ -98,7 +120,10 @@ public class AVXmlLoader : MonoBehaviour
         foreach (XmlNode node in chptNode.ChildNodes)
         {
             if (node.Name == "dialog")
+            {
                 dialog = node;
+                break;
+            }
         }
 
         foreach (XmlNode dialogNode in dialog.ChildNodes)

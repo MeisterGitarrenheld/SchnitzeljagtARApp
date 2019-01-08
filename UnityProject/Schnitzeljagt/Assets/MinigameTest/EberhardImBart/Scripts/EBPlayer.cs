@@ -13,12 +13,12 @@ public class EBPlayer : MonoBehaviour {
     private Vector3 MaxSpeed;
 
     private Vector3 SpawnPosition;
-	// Use this for initialization
+
 	void Start () {
         SpawnPosition = Camera.main.transform.position + Vector3.down * 5 + Vector3.forward * 10;
     }
 	
-	// Update is called once per frame
+
 	void Update () {
         if(Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
