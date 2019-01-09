@@ -37,7 +37,10 @@ public class MainGameManager : MonoBehaviour
     void Update()
     {
         if (AVInputHandler.PointerDown())
+        {
+
             ChapterManager.Progress();
+        }
     }
 
     public void ToggleCamera()

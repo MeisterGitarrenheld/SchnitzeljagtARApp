@@ -41,4 +41,9 @@ public class AVInputHandler : MonoBehaviour {
         return Input.GetKey(key);
     }
 
+    public static Vector2 PointerPosition()
+    {
+        return Vector2.zero;
+    }
+
 }
