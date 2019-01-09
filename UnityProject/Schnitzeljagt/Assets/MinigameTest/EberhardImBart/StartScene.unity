@@ -1483,7 +1483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ziegel: {fileID: 1636330547102646, guid: a8a6e9de1992441eebaa5a6a77b6521b, type: 2}
-  velocityMultiplier: 3
+  velocityMultiplier: 0.1
   zGeschw: 7
 --- !u!4 &1771164308
 Transform:

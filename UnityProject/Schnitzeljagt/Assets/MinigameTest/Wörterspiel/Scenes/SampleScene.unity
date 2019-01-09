@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf34c533bd2441048a5072e3cb4844e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 20
+  MovementSpeed: 5
   PointsText: {fileID: 1816147443}
   FloatingText: {fileID: 1086476090409548, guid: 5d40e5ad621f94740953ecf0c3f0d512,
     type: 2}

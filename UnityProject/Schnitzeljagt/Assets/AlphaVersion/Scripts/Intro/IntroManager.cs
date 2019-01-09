@@ -13,6 +13,8 @@ public class IntroManager : MonoBehaviour
     {
         gm = GlobalGameManager.Instance;
         GameObject.Find("StartGame").GetComponent<Button>().onClick.AddListener(delegate { gm.LoadScene("Game"); });
+        GameObject.Find("MiniGames").GetComponent<Button>().onClick.AddListener(delegate { gm.LoadScene("Minigames"); });
+        //print("Button Func" + GlobalGameManager.Instance);
     }
 
     

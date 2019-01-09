@@ -15,7 +15,7 @@ public class Ziegel : MonoBehaviour
 
     // Use this for initialization
     void Start () {
-        PointsText = GameObject.Find("PointsText").GetComponent<Text>();
+        PointsText = GameObject.Find("Text").GetComponent<Text>();
         Points = int.Parse(PointsText.text.Substring(8));
         Destroy(gameObject, 5);
 	}

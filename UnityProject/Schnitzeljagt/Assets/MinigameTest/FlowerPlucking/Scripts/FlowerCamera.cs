@@ -31,7 +31,7 @@ public class FlowerCamera : MonoBehaviour {
         }
         else
         {
-            //GyroModifyCamera();
+            GyroModifyCamera();
         }
     }
 
