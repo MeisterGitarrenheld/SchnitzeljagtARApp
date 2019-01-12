@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073993, b: 0.3587269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TruheOffen: {fileID: 21300000, guid: 336d17c9a7d9d4c08ae4e0bf9eac9951, type: 3}
   TruheZu: {fileID: 21300000, guid: a55d74846c14d45e19b180acee82a0ea, type: 3}
-  TruheGold: {fileID: 21300000, guid: 67d00950a14b64549b182edb6b13e3df, type: 3}
+  TruheGold: {fileID: 21300000, guid: 50eba54215857ff46b10108e799b52c9, type: 3}
   TruheRot: {fileID: 21300000, guid: 67d00950a14b64549b182edb6b13e3df, type: 3}
   GlowTime: 1
   TruhenState: 0

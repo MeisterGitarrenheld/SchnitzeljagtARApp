@@ -1,14 +1,8 @@
 ﻿<Properties StartupConfiguration="{8DAD5128-608D-9AC9-9E4F-F84D146D607F}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MinigameTest/EberhardImBart/Scripts/Ziegel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SequenceAnimator.cs">
     <Files>
-      <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Master.cs" Line="73" Column="1" />
-      <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Sprechblase.cs" Line="42" Column="24" />
-      <File FileName="Assets/MinigameTest/Wörterspiel/Scripts/Truhe.cs" Line="10" Column="28" />
-      <File FileName="Assets/MinigameTest/EberhardImBart/Scripts/EBGM.cs" Line="29" Column="23" />
-      <File FileName="Assets/MinigameTest/EberhardImBart/Scripts/EBPlayer.cs" Line="1" Column="6" />
-      <File FileName="Assets/MinigameTest/EberhardImBart/Scripts/Eberhardt.cs" Line="39" Column="24" />
-      <File FileName="Assets/MinigameTest/EberhardImBart/Scripts/Ziegel.cs" Line="1" Column="1" />
+      <File FileName="Assets/SequenceAnimator.cs" Line="35" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
