@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
-public class CountDown : MonoBehaviour
+public class time : MonoBehaviour
 {
-    public int timeLeft = 90; //Seconds Overall
-    public Text countdown; //UI Text Object
+    public int timeLeft = 90; 
+    public Text countdown; 
+
     void Start()
     {
         StartCoroutine("LoseTime");
-        Time.timeScale = 1; //Just making sure that the timeScale is right
     }
     void Update()
     {
-        countdown.text = ("" + timeLeft); //Showing the Score on the Canvas
+        countdown.text = ("Time Left: " + timeLeft); 
+        if(timeLeft == 0)
+        {
+            countdown.text = ("That's really embarassing");
+
+        }
     }
     //Simple Coroutine
     IEnumerator LoseTime()
