@@ -129,7 +129,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 889b9998bfa0cb3489931e0ede27855f
+      spriteID: 2cdff321e98a927428480b01a62ed0cd
       vertices: []
       indices: 
       edges: []
@@ -149,27 +149,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12123811f6c957342bf05b2be2e74eec
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rechts_sheet_2
-      rect:
-        serializedVersion: 2
-        x: 1365
-        y: 2601
-        width: 675
-        height: 1488
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f0758181244a604ea003a855c6b07c5
+      spriteID: 8d05e55edfb74ad4f813359f96f2ecdd
       vertices: []
       indices: 
       edges: []
@@ -189,7 +169,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 393f0e083b3fde345a8df10266340cc4
+      spriteID: f054dd78ac5d91e45bf24c5c18a2f473
       vertices: []
       indices: 
       edges: []
@@ -209,7 +189,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c33e9c2b283e5a04081fdfd24f31a0f0
+      spriteID: 1c2e65f2576ba6b498acbb1995a9ce9a
       vertices: []
       indices: 
       edges: []
@@ -229,27 +209,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbab31b66d454e04686d69bd68dfe56e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rechts_sheet_6
-      rect:
-        serializedVersion: 2
-        x: 696
-        y: 1128
-        width: 729
-        height: 1456
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e10a29fa087d9c840a0f410d8a825c08
+      spriteID: c9f901776c159b44d8af731957577d45
       vertices: []
       indices: 
       edges: []
@@ -258,8 +218,8 @@ TextureImporter:
       name: rechts_sheet_7
       rect:
         serializedVersion: 2
-        x: 2085
-        y: 1155
+        x: 1429
+        y: 1143
         width: 756
         height: 1444
       alignment: 0
@@ -269,7 +229,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fddfaa0d6a655b45bb539fc665b225d
+      spriteID: 7868e62326701ff478028757378ddeaa
       vertices: []
       indices: 
       edges: []
@@ -289,7 +249,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aba9f928ee7f37c4abaf9555eb808775
+      spriteID: ffd99d6fcf4b93d4db17640c41d031c7
       vertices: []
       indices: 
       edges: []
