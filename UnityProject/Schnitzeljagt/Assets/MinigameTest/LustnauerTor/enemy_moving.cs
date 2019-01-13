@@ -26,6 +26,8 @@ public class enemy_moving : MonoBehaviour {
             if (transform.position.x >= RightGrenze)
             {
                 walkInThisDirection = false;
+                GetComponent<Animator>().SetBool("FacesRight", true);
+
             }
         }
         else
@@ -34,6 +36,7 @@ public class enemy_moving : MonoBehaviour {
             if (transform.position.x <= LeftGrenze)
             {
                 walkInThisDirection = true;
+                GetComponent<Animator>().SetBool("FacesRight", false);
             }
 
         }
