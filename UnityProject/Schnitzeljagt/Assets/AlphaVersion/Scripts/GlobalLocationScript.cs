@@ -37,7 +37,7 @@ public class GlobalLocationScript : MonoBehaviour
             yield break;
 
         // Start service before querying location
-        Input.location.Start(1, 0.1f);
+        Input.location.Start(0.1f, 0.5f);
 
         // Wait until service initializes
         int maxWait = 20;

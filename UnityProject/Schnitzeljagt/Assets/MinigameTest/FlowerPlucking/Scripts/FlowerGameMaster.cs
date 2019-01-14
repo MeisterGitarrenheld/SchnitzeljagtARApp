@@ -99,7 +99,7 @@ public class FlowerGameMaster : MonoBehaviour {
                 foreach (GeoPoint flowerGP in allPoints)
                 {
                     
-                    if (flowerGP.Compare(gLoc.GetCurrentLocation(), 5/100000f) && !collectedPoints.Contains(flowerGP))
+                    if (flowerGP.Compare(gLoc.GetCurrentLocation(), 1/10000f) && !collectedPoints.Contains(flowerGP))
                     {
                         if(blumenInstanz != null)
                             Handheld.Vibrate();
