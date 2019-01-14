@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Blume : MonoBehaviour {
 
+    public GeoPoint ownPoint;
+
 
     public int MaxCuts;
     public float UpOffset;
@@ -21,7 +23,7 @@ public class Blume : MonoBehaviour {
         flowerPivot = transform.Find("FlowerPivot");
         maxScale = transform.localScale.x;
         yPosition = transform.position.y;
-        transform.localScale = Vector3.zero;
+        transform.localScale = Vector3.one * 0.3f;
         //SetCurrentRoutine(Grow());
     }
 
@@ -44,7 +46,10 @@ public class Blume : MonoBehaviour {
     {
         curCuts++;
         if (curCuts >= MaxCuts)
-            Destroy(gameObject, 0f);
+        {
+            GameObject.Find("Handlers").GetComponent<FlowerGameMaster>().collectedPoints.Add(ownPoint);
+            Destroy(transform.parent.gameObject, 0f);
+        }
     }
 
 
@@ -71,7 +76,7 @@ public class Blume : MonoBehaviour {
     IEnumerator Grow()
     {
         int maxSteps = 50;
-        float curStep = 0;
+        float curStep = 10;
         while (curStep < maxSteps)
         {
             curStep++;
@@ -85,17 +90,17 @@ public class Blume : MonoBehaviour {
 
     IEnumerator Shrink()
     {
-        int maxSteps = 20;
-        float curStep = maxSteps;
-        float curScale = transform.localScale.x;
-        float curYPosition = transform.position.y;
-        while (curStep > 0)
-        {
-            curStep--;
-            transform.localScale = Vector3.one * (curScale * curStep / maxSteps);
-            transform.position = new Vector3(transform.position.x, curYPosition * curStep / maxSteps, transform.position.z);
-            yield return new WaitForSeconds(0.033f);
-        }
+        //int maxSteps = 20;
+        //float curStep = maxSteps;
+        //float curScale = transform.localScale.x;
+        //float curYPosition = transform.position.y;
+        //while (curStep > 0)
+        //{
+        //    curStep--;
+        //    transform.localScale = Vector3.one * (curScale * curStep / maxSteps);
+        //    transform.position = new Vector3(transform.position.x, curYPosition * curStep / maxSteps, transform.position.z);
+        //    yield return new WaitForSeconds(0.033f);
+        //}
 
         yield return null;
     }

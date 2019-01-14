@@ -5,16 +5,31 @@ using UnityEngine;
 
 public class FlowerGameMaster : MonoBehaviour {
 
+    public List<Sprite> BlumenSprites;
     public List<GeoPoint> flowerPoints;
     public List<GeoPoint> rightFlowerPoints;
+    public List<GeoPoint> allPoints;
     public float FlowerCheckInterval;
+    public GameObject Instructions;
+    public FlowerCamera fCam;
+    public GameObject Blume;
 
     GlobalLocationScript gLoc;
-
     XmlDocument xmlDocument;
     TextAsset xmlAsset;
-
     float flowerCheckTimer;
+    bool startGame;
+    float resetCamTimer;
+    bool triggerBlume;
+    List<Sprite> blSprite;
+    GameObject blumenInstanz;
+
+
+
+
+    GeoPoint testLocation;
+
+    public List<GeoPoint> collectedPoints;
 
 	void Start ()
     {
@@ -34,24 +49,76 @@ public class FlowerGameMaster : MonoBehaviour {
             flowerPoints.RemoveAt(rndSelect);
             rightFlowerPoints.Add(gp);
         }
-	}
+        for (int i = 0; i < 20; i++)
+        {
+            int rndSelect = Random.Range(0, flowerPoints.Count);
+            flowerPoints.RemoveAt(rndSelect);
+        }
+        allPoints = new List<GeoPoint>();
+        allPoints.AddRange(rightFlowerPoints);
+        allPoints.AddRange(flowerPoints);
+
+        startGame = true;
+
+
+        testLocation = gLoc.GetCurrentLocation();
+        allPoints.Add(testLocation);
+
+        collectedPoints = new List<GeoPoint>();
+        blSprite = BlumenSprites;
+    }
 	
 	void Update ()
     {
-        if(flowerCheckTimer < 0)
+        if (startGame)
         {
-            flowerCheckTimer = FlowerCheckInterval;
-
-            foreach(GeoPoint flowerGP in rightFlowerPoints)
+            if(Input.touchCount > 0 || Input.GetMouseButtonDown(0))
             {
-                if (flowerGP.Compare(gLoc.GetCurrentLocation(), 5))
+                fCam.ResetGyroCamera();
+                startGame = false;
+            }
+        }
+        else
+        {
+            if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+            {
+                resetCamTimer += Time.deltaTime;
+                if(resetCamTimer > 2)
                 {
-                    Handheld.Vibrate();
+                    resetCamTimer = 0;
+                    fCam.ResetGyroCamera();
                 }
             }
+            
 
+
+            if (flowerCheckTimer < 0)
+            {
+                flowerCheckTimer = FlowerCheckInterval;
+
+                foreach (GeoPoint flowerGP in allPoints)
+                {
+                    
+                    if (flowerGP.Compare(gLoc.GetCurrentLocation(), 5/100000f) && !collectedPoints.Contains(flowerGP))
+                    {
+                        if(blumenInstanz != null)
+                            Handheld.Vibrate();
+                        if(blumenInstanz == null)
+                        {
+                            blumenInstanz = Instantiate(Blume, transform.position + Vector3.forward , Quaternion.identity);
+                            blumenInstanz.GetComponentInChildren<Blume>().ownPoint = flowerGP;
+                            int randSprt = Random.Range(0, blSprite.Count);
+                            blumenInstanz.GetComponentInChildren<SpriteRenderer>().sprite = blSprite[randSprt];
+                            blSprite.RemoveAt(randSprt);
+                            if (blSprite.Count == 0)
+                                blSprite = BlumenSprites;
+                        }
+                    }
+
+                }
+            }
+            flowerCheckTimer -= Time.deltaTime;
         }
-        flowerCheckTimer -= Time.deltaTime;
 	}
 
     void LoadFlowerPositions()

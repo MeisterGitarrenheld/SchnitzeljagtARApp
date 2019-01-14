@@ -1,9 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlobalLocationScript : MonoBehaviour
 {
+
+    public Text debugLocationText;
+    private GeoPoint startPoint;
+
+    private void Update()
+    {
+        GeoPoint curLoc = GetCurrentLocation();
+        if(startPoint != null)
+        debugLocationText.text = "Latitude: " + curLoc.Latitude + "\n"
+            + "Longitude: " + curLoc.Longitude + "\n" +
+            "Altitude: " + curLoc.Altitude + "\n"
+            + "Distance: " + curLoc.Distance(startPoint);
+
+        if((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            || Input.GetMouseButtonDown(0))
+        {
+            startPoint = GetCurrentLocation();
+        }
+    }
 
     public GeoPoint GetCurrentLocation()
     { 
@@ -17,7 +37,7 @@ public class GlobalLocationScript : MonoBehaviour
             yield break;
 
         // Start service before querying location
-        Input.location.Start();
+        Input.location.Start(1, 0.1f);
 
         // Wait until service initializes
         int maxWait = 20;
@@ -48,5 +68,6 @@ public class GlobalLocationScript : MonoBehaviour
 
         // Stop service if there is no need to query location updates continuously
         //Input.location.Stop();
+        startPoint = GetCurrentLocation();
     }
 }
