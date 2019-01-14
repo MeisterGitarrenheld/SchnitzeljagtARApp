@@ -6,33 +6,17 @@ public class FlowerCamera : MonoBehaviour {
 
     public float cameraSpeed;
 
-    Vector2 mousePosition;
-    Vector2 oldMousePosition;
+    Quaternion fixRotation;
 
     void Start()
     {
         Input.gyro.enabled = true;
+        fixRotation = Quaternion.Euler(90, 0, 0);
     }
 
     protected void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            mousePosition = Input.mousePosition;
-            oldMousePosition = mousePosition;
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            mousePosition = Input.mousePosition;
-            Vector2 mouseOffset = (mousePosition - oldMousePosition) * cameraSpeed;
-            transform.Rotate(Vector3.up, mouseOffset.x, Space.World);
-            transform.Rotate(transform.right, -mouseOffset.y, Space.World);
-            oldMousePosition = mousePosition;
-        }
-        else
-        {
-            GyroModifyCamera();
-        }
+        GyroModifyCamera();
     }
 
     /********************************************/
@@ -41,7 +25,7 @@ public class FlowerCamera : MonoBehaviour {
     // Make the necessary change to the camera.
     void GyroModifyCamera()
     {
-        transform.rotation = GyroToUnity(Input.gyro.attitude);
+        transform.rotation =  fixRotation * GyroToUnity(Input.gyro.attitude);
     }
 
     private static Quaternion GyroToUnity(Quaternion q)
