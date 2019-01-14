@@ -15,7 +15,7 @@ public class time : MonoBehaviour
     void Update()
     {
         countdown.text = ("Time Left: " + timeLeft); 
-        if(timeLeft == 0)
+        if(timeLeft == 0 && timeLeft<0)
         {
             countdown.text = ("That's really embarassing");
 
