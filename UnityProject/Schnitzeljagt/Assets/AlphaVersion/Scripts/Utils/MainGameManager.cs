@@ -93,6 +93,10 @@ public class MainGameManager : MonoBehaviour
             case "Rathaus_quest":
                 SceneManager.LoadScene(8);
                 break;
+            case "Lustnaer_Tor":
+                SceneManager.LoadScene(9);
+                break;
+
             default: break;
         }
     }
