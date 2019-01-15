@@ -877,7 +877,6 @@ RectTransform:
   m_Children:
   - {fileID: 846930877}
   - {fileID: 606443098}
-  - {fileID: 898290520}
   m_Father: {fileID: 14813042}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2141,7 +2140,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 516776622}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3382,18 +3381,18 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 898290519}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.54375, y: 1.54375, z: 1.54375}
   m_Children:
   - {fileID: 2008499397}
-  m_Father: {fileID: 274130028}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_AnchoredPosition: {x: 1235, y: 1277.2596}
+  m_SizeDelta: {x: 20, y: 1405.2}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &898290521
 MonoBehaviour:
@@ -3903,7 +3902,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lustnaer Tor
+  m_Text: lustnaer_tor
 --- !u!222 &1252409080
 CanvasRenderer:
   m_ObjectHideFlags: 0
