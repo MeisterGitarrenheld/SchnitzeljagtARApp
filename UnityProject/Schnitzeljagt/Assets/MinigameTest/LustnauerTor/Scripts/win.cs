@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class win : MonoBehaviour {
     public Text winwin;
@@ -18,7 +20,7 @@ public class win : MonoBehaviour {
     {
         timer.text = "WIN WIN";
         yield return new WaitForSeconds(5);
-        Application.Quit();
+        Application.LoadLevel(Application.loadedLevel);
     }
 
 }
