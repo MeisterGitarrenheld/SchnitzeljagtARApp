@@ -6,7 +6,8 @@ public class Blume : MonoBehaviour {
 
     public GeoPoint ownPoint;
 
-
+    public bool Poisonous;
+    public bool Fuchsia;
     public int MaxCuts;
     public float UpOffset;
     public Transform pivot;
@@ -47,7 +48,7 @@ public class Blume : MonoBehaviour {
         curCuts++;
         if (curCuts >= MaxCuts)
         {
-            GameObject.Find("Handlers").GetComponent<FlowerGameMaster>().collectedPoints.Add(ownPoint);
+            GameObject.Find("Handlers").GetComponent<FlowerGameMaster>().PluckFlower(this);
             Destroy(transform.parent.gameObject, 0f);
         }
     }

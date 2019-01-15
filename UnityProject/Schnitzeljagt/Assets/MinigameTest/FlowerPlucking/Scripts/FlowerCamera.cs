@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class FlowerCamera : MonoBehaviour {
 
-    public float cameraSpeed;
-
+    
     Quaternion fixRotation;
     Quaternion offsetRotation;
 

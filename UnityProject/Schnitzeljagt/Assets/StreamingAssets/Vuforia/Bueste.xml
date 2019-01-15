@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="GoetheTest" size="1.000000 0.667995" />
+    <ImageTarget name="DerTraumTest_staerkereKontur" size="1.000000 1.497018" />
+    <ImageTarget name="DerTraumTest2" size="1.000000 1.497018" />
     <ImageTarget name="VenusMedici3" size="1.000000 1.497018" />
     <ImageTarget name="Schiller3" size="1.000000 0.667995" />
     <ImageTarget name="KoenigWilhelm3" size="1.000000 0.667995" />

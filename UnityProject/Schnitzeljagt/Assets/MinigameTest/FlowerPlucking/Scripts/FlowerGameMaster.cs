@@ -7,8 +7,6 @@ public class FlowerGameMaster : MonoBehaviour {
 
     public List<Sprite> BlumenSprites;
     public List<GeoPoint> flowerPoints;
-    public List<GeoPoint> rightFlowerPoints;
-    public List<GeoPoint> allPoints;
     public float FlowerCheckInterval;
     public GameObject Instructions;
     public FlowerCamera fCam;
@@ -23,14 +21,19 @@ public class FlowerGameMaster : MonoBehaviour {
     bool triggerBlume;
     List<Sprite> blSprite;
     GameObject blumenInstanz;
-
-
-
-
+    
     GeoPoint testLocation;
+
+    bool flowerNear;
+    GeoPoint currentFP;
 
     public List<GeoPoint> collectedPoints;
 
+    public int Points;
+    public float GameTimer;
+
+
+    private int flowersPlucked;
 	void Start ()
     {
         gLoc = GameObject.Find("GlobalGameManager").GetComponent<GlobalLocationScript>();
@@ -39,33 +42,18 @@ public class FlowerGameMaster : MonoBehaviour {
         xmlAsset = (TextAsset) Resources.Load(xmlDocumentName, typeof(TextAsset));
 
         flowerPoints = new List<GeoPoint>();
-        rightFlowerPoints = new List<GeoPoint>();
         LoadFlowerPositions();
-
-        for(int i = 0; i < 10; i++)
-        {
-            int rndSelect = Random.Range(0, flowerPoints.Count);
-            GeoPoint gp = flowerPoints[rndSelect];
-            flowerPoints.RemoveAt(rndSelect);
-            rightFlowerPoints.Add(gp);
-        }
-        for (int i = 0; i < 20; i++)
-        {
-            int rndSelect = Random.Range(0, flowerPoints.Count);
-            flowerPoints.RemoveAt(rndSelect);
-        }
-        allPoints = new List<GeoPoint>();
-        allPoints.AddRange(rightFlowerPoints);
-        allPoints.AddRange(flowerPoints);
-
+        
         startGame = true;
 
 
         testLocation = gLoc.GetCurrentLocation();
-        allPoints.Add(testLocation);
-
+        flowerPoints.Add(testLocation);
         collectedPoints = new List<GeoPoint>();
         blSprite = BlumenSprites;
+
+        Points = 0;
+        GameTimer = 0;
     }
 	
 	void Update ()
@@ -96,30 +84,53 @@ public class FlowerGameMaster : MonoBehaviour {
             {
                 flowerCheckTimer = FlowerCheckInterval;
 
-                foreach (GeoPoint flowerGP in allPoints)
+                flowerNear = false;
+                currentFP = null;
+                foreach (GeoPoint flowerGP in flowerPoints)
                 {
                     
-                    if (flowerGP.Compare(gLoc.GetCurrentLocation(), 1/10000f) && !collectedPoints.Contains(flowerGP))
+                    if (flowerGP.Compare(gLoc.GetCurrentLocation(), 5/100000f) && !collectedPoints.Contains(flowerGP))
                     {
-                        if(blumenInstanz != null)
-                            Handheld.Vibrate();
-                        if(blumenInstanz == null)
-                        {
-                            blumenInstanz = Instantiate(Blume, transform.position + Vector3.forward , Quaternion.identity);
-                            blumenInstanz.GetComponentInChildren<Blume>().ownPoint = flowerGP;
-                            int randSprt = Random.Range(0, blSprite.Count);
-                            blumenInstanz.GetComponentInChildren<SpriteRenderer>().sprite = blSprite[randSprt];
-                            blSprite.RemoveAt(randSprt);
-                            if (blSprite.Count == 0)
-                                blSprite = BlumenSprites;
-                        }
+
+                        flowerNear = true;
+                        currentFP = flowerGP;
                     }
 
                 }
             }
             flowerCheckTimer -= Time.deltaTime;
+            if(flowerNear)
+            {
+
+                Handheld.Vibrate();
+                if (blumenInstanz == null)
+                {
+                    blumenInstanz = Instantiate(Blume, transform.position + Vector3.forward, Quaternion.identity);
+                    blumenInstanz.GetComponentInChildren<Blume>().ownPoint = currentFP;
+                    int randSprt = Random.Range(0, blSprite.Count);
+                    blumenInstanz.GetComponentInChildren<SpriteRenderer>().sprite = blSprite[randSprt];
+                    blSprite.RemoveAt(randSprt);
+                    if (blSprite.Count == 0)
+                        blSprite = BlumenSprites;
+                }
+            }
+            else
+            {
+                if(blumenInstanz != null)
+                {
+                    Destroy(blumenInstanz);
+                }
+            }
         }
 	}
+
+    public void PluckFlower(Blume flower)
+    {
+        collectedPoints.Add(flower.ownPoint);
+        flowersPlucked++;
+        Points += flower.Poisonous ? 0 :  flower.Fuchsia ? 30 : 10;
+        GameTimer += flower.Poisonous ? 10 : flower.Fuchsia ? -30 : 0;
+    }
 
     void LoadFlowerPositions()
     {

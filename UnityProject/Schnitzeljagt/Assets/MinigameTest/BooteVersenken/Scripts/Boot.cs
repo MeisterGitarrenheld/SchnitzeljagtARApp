@@ -52,7 +52,10 @@ public class Boot : MonoBehaviour {
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
-            BoatGameMaster.Instance.BoatHit(CanBeHit? 100 + (int)transform.position.z :-100);
+            int zPos = (int)transform.position.z;
+            BoatGameMaster.Instance.BoatHit(CanBeHit ? 10 + (zPos < 17 ? 0 : (zPos < 22 ? 10 : 40)) : -20);
+            //9.23676
+            //27.71028
         }
     }
 }
