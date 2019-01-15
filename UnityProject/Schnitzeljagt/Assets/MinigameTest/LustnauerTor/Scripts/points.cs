@@ -17,7 +17,7 @@ public class points : MonoBehaviour
     {
         if (counter != 1)
         {
-            text.text = counter + "points";
+            text.text = counter + " points";
         }
         else
         {

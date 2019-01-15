@@ -10,6 +10,7 @@ public class win : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         winwin.text = "Wow, you won";
+        points.counter += 80;
         StartCoroutine(Exit());
     }
 
