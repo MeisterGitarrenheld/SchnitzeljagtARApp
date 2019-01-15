@@ -1500,5 +1500,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rock: {fileID: 1724322127947820, guid: c83a22f83d6321f419ec2d95f9f6572c, type: 2}
-  mouseDistanceFactor: 2
-  maxForce: 500
+  mouseDistanceFactor: 1.5
+  maxForce: 750

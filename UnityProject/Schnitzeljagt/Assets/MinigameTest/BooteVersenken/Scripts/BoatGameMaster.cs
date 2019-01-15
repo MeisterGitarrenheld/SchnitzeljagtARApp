@@ -50,7 +50,7 @@ public class BoatGameMaster : MonoBehaviour {
         if(!GameOver)
             TimerText.text = "Time: " + (60 - GameTimer).ToString().Split('.')[0];
 
-        if(!GameOver && GameTimer > 60)
+        if(!GameOver && (GameTimer > 60 || Points >= 300))
         {
             GameOver = true;
             Array.ForEach(FindObjectsOfType<Rock>(), r => Destroy(r.gameObject));
@@ -66,6 +66,8 @@ public class BoatGameMaster : MonoBehaviour {
         Points += points;
         if (Points < 0)
             Points = 0;
+        if (Points > 300)
+            Points = 300;
         PointsText.text = Points > 200 ? Points + "/300" : Points + "/200";
     }
 
