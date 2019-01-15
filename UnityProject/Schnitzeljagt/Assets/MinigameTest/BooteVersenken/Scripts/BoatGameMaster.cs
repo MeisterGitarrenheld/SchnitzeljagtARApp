@@ -44,10 +44,11 @@ public class BoatGameMaster : MonoBehaviour {
             Instantiate(Boat, transform.position + Vector3.right * RightOffset + BoatSpawnDirection * BoatSpawnLength + Vector3.up * BoatUpOffset, Quaternion.identity);
             timer = UnityEngine.Random.Range(2f, 4f);
 
-            timer -= Time.deltaTime;
-            GameTimer += Time.deltaTime;
-            TimerText.text = "Time: " + (60 - GameTimer).ToString().Split('.')[0];
         }
+        timer -= Time.deltaTime;
+        GameTimer += Time.deltaTime;
+        if(!GameOver)
+            TimerText.text = "Time: " + (60 - GameTimer).ToString().Split('.')[0];
 
         if(!GameOver && GameTimer > 60)
         {
