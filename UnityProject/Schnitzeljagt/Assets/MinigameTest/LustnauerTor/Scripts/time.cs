@@ -14,20 +14,28 @@ public class time : MonoBehaviour
     }
     void Update()
     {
-        countdown.text = ("Time Left: " + timeLeft); 
-        if(timeLeft == 0 && timeLeft<0)
-        {
-            countdown.text = ("That's really embarassing");
-
-        }
+            countdown.text = ("Time Left: " + timeLeft);
     }
-    //Simple Coroutine
+
     IEnumerator LoseTime()
     {
         while (true)
         {
             yield return new WaitForSeconds(1);
             timeLeft--;
+            if (timeLeft<0)
+        {
+            countdown.text = ("That's really embarassing");
+            StartCoroutine(Exit());
+
         }
+        }
+    }
+
+    IEnumerator Exit()
+    {
+        countdown.text = "TIMES UP";
+        yield return new WaitForSeconds(3);
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
