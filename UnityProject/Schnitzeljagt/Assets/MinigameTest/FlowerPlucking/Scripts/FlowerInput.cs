@@ -21,7 +21,7 @@ public class FlowerInput : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit))
             {
-                if (hit.collider != null)
+                if (hit.collider != null && hit.collider.GetComponent<Blume>() != null)
                     hit.collider.GetComponent<Blume>().Cut();
             }
         }

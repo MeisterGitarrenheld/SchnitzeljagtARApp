@@ -5,17 +5,35 @@ using UnityEngine;
 
 public class FlowerGameMaster : MonoBehaviour {
 
+    public List<Sprite> BlumenSprites;
     public List<GeoPoint> flowerPoints;
-    public List<GeoPoint> rightFlowerPoints;
     public float FlowerCheckInterval;
+    public GameObject Instructions;
+    public FlowerCamera fCam;
+    public GameObject Blume;
 
     GlobalLocationScript gLoc;
-
     XmlDocument xmlDocument;
     TextAsset xmlAsset;
-
     float flowerCheckTimer;
+    bool startGame;
+    float resetCamTimer;
+    bool triggerBlume;
+    List<Sprite> blSprite;
+    GameObject blumenInstanz;
+    
+    GeoPoint testLocation;
 
+    bool flowerNear;
+    GeoPoint currentFP;
+
+    public List<GeoPoint> collectedPoints;
+
+    public int Points;
+    public float GameTimer;
+
+
+    private int flowersPlucked;
 	void Start ()
     {
         gLoc = GameObject.Find("GlobalGameManager").GetComponent<GlobalLocationScript>();
@@ -24,35 +42,95 @@ public class FlowerGameMaster : MonoBehaviour {
         xmlAsset = (TextAsset) Resources.Load(xmlDocumentName, typeof(TextAsset));
 
         flowerPoints = new List<GeoPoint>();
-        rightFlowerPoints = new List<GeoPoint>();
         LoadFlowerPositions();
+        
+        startGame = true;
 
-        for(int i = 0; i < 10; i++)
-        {
-            int rndSelect = Random.Range(0, flowerPoints.Count);
-            GeoPoint gp = flowerPoints[rndSelect];
-            flowerPoints.RemoveAt(rndSelect);
-            rightFlowerPoints.Add(gp);
-        }
-	}
+
+        testLocation = gLoc.GetCurrentLocation();
+        flowerPoints.Add(testLocation);
+        collectedPoints = new List<GeoPoint>();
+        blSprite = BlumenSprites;
+
+        Points = 0;
+        GameTimer = 0;
+    }
 	
 	void Update ()
     {
-        if(flowerCheckTimer < 0)
+        if (startGame)
         {
-            flowerCheckTimer = FlowerCheckInterval;
-
-            foreach(GeoPoint flowerGP in rightFlowerPoints)
+            if(Input.touchCount > 0 || Input.GetMouseButtonDown(0))
             {
-                if (flowerGP.Compare(gLoc.GetCurrentLocation(), 5))
+                fCam.ResetGyroCamera();
+                startGame = false;
+            }
+        }
+        else
+        {
+            if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+            {
+                resetCamTimer += Time.deltaTime;
+                if(resetCamTimer > 2)
                 {
-                    Handheld.Vibrate();
+                    resetCamTimer = 0;
+                    fCam.ResetGyroCamera();
                 }
             }
+            
 
+
+            if (flowerCheckTimer < 0)
+            {
+                flowerCheckTimer = FlowerCheckInterval;
+
+                flowerNear = false;
+                currentFP = null;
+                foreach (GeoPoint flowerGP in flowerPoints)
+                {
+                    
+                    if (flowerGP.Compare(gLoc.GetCurrentLocation(), 5/100000f) && !collectedPoints.Contains(flowerGP))
+                    {
+
+                        flowerNear = true;
+                        currentFP = flowerGP;
+                    }
+
+                }
+            }
+            flowerCheckTimer -= Time.deltaTime;
+            if(flowerNear)
+            {
+
+                Handheld.Vibrate();
+                if (blumenInstanz == null)
+                {
+                    blumenInstanz = Instantiate(Blume, transform.position + Vector3.forward, Quaternion.identity);
+                    blumenInstanz.GetComponentInChildren<Blume>().ownPoint = currentFP;
+                    int randSprt = Random.Range(0, blSprite.Count);
+                    blumenInstanz.GetComponentInChildren<SpriteRenderer>().sprite = blSprite[randSprt];
+                    blSprite.RemoveAt(randSprt);
+                    if (blSprite.Count == 0)
+                        blSprite = BlumenSprites;
+                }
+            }
+            else
+            {
+                if(blumenInstanz != null)
+                {
+                    Destroy(blumenInstanz);
+                }
+            }
         }
-        flowerCheckTimer -= Time.deltaTime;
 	}
+
+    public void PluckFlower(Blume flower)
+    {
+        collectedPoints.Add(flower.ownPoint);
+        flowersPlucked++;
+        Points += flower.Poisonous ? 0 :  flower.Fuchsia ? 30 : 10;
+        GameTimer += flower.Poisonous ? 10 : flower.Fuchsia ? -30 : 0;
+    }
 
     void LoadFlowerPositions()
     {

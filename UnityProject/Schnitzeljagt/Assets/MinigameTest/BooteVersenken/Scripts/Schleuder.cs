@@ -13,10 +13,11 @@ public class Schleuder : MonoBehaviour {
 
     private Vector3 ForceVector;
 
+    private SchleuderLine[] sLines;
 
     void Start()
     {
-
+        sLines = GetComponentsInChildren<SchleuderLine>();
     }
 
 
@@ -31,6 +32,9 @@ public class Schleuder : MonoBehaviour {
             ForceVector = Vector3.ClampMagnitude((MousePosition - OldMousePosition) / mouseDistanceFactor, maxForce);
 
             Debug.DrawLine(transform.position, transform.position - (ForceVector / 100f));
+
+            foreach (SchleuderLine sl in sLines)
+                sl.SetTarget(Vector3.back * ForceVector.magnitude / 100f);
         }
 
         if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
@@ -40,6 +44,8 @@ public class Schleuder : MonoBehaviour {
             ForceVector.z = ForceVector.y;
             //print(ForceVector);
             rockRb.AddForce(ForceVector);
+            foreach (SchleuderLine sl in sLines)
+                sl.SetTarget(Vector3.zero);
         }
     }
 }

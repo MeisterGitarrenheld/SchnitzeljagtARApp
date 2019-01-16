@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 1
+  BootPoints: {fileID: 1035417630456174, guid: 06783833d7204db45ba40a64286822b9, type: 2}
   Good1: {fileID: 21300000, guid: 5b062068f62464f7daaecf143fd3238f, type: 3}
   Good2: {fileID: 21300000, guid: 917d72c1b8a5e4da193ae58792a57cf7, type: 3}
   Bad1: {fileID: 21300000, guid: e162a6c67919042c09608b4ba8c05328, type: 3}
@@ -107,7 +108,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5b062068f62464f7daaecf143fd3238f, type: 3}
-  m_Color: {r: 0.8301887, g: 0.36246312, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

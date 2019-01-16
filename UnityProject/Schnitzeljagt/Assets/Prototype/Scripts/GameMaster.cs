@@ -19,7 +19,8 @@ public class GameMaster : MonoBehaviour {
     public Language DefaultLanguage;
     public Language SelectedLanguage { get; private set; }
 
-    private int selectedGame;
+    private int selectedGameI;
+    private string selectedGameS;
 
     private void Start()
     {
@@ -64,12 +65,22 @@ public class GameMaster : MonoBehaviour {
 
     public void SetMiniGame(int game)
     {
-        selectedGame = game;
+        selectedGameI = game;
+    }
+
+    public void SetMiniGame(string game)
+    {
+        selectedGameS = game;
     }
 
     public void StartMiniGame()
     {
-        SceneManager.LoadScene(selectedGame);
+        SceneManager.LoadScene(selectedGameI);
+    }
+
+    public void StartMiniGameS()
+    {
+        SceneManager.LoadScene(selectedGameS);
     }
 
 }

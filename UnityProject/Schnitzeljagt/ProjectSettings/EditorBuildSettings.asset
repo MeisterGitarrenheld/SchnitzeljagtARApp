@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
+    path: Assets/TestScene/Scenes/Accelerometer.unity
+    guid: 55e0f2456154c644e8fcedf64468e507
+  - enabled: 0
     path: Assets/Scenes/Prototype.unity
     guid: 420660f454a859a4c9de22dabb0b4e99
   - enabled: 1
@@ -32,13 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MinigameTest/Fragebogen/Frage.unity
     guid: 225e14a1ddb64764d9d158ee5bfa94c9
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/AlphaVersion/Scenes/Minigames.unity
     guid: 24d3ca89855ea3448a77d755ef653b37
   - enabled: 1
     path: Assets/MinigameTest/LustnauerTor/lustnauer_tor.unity
     guid: eeebeae71049fd74fb382e9ecc6202d7
+  - enabled: 1
+    path: Assets/Scenes/Bueste.unity
+    guid: fbe3d98922b66bc4ca131b41df46882e
   m_configObjects: {}

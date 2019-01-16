@@ -43,13 +43,14 @@ public class BoatGameMaster : MonoBehaviour {
             BoatSpawnLength = UnityEngine.Random.Range(10f, 30f);
             Instantiate(Boat, transform.position + Vector3.right * RightOffset + BoatSpawnDirection * BoatSpawnLength + Vector3.up * BoatUpOffset, Quaternion.identity);
             timer = UnityEngine.Random.Range(2f, 4f);
-        }
 
+        }
         timer -= Time.deltaTime;
         GameTimer += Time.deltaTime;
-        TimerText.text = "Time: " + GameTimer.ToString().Split('.')[0];
+        if(!GameOver)
+            TimerText.text = "Time: " + (60 - GameTimer).ToString().Split('.')[0];
 
-        if(!GameOver && GameTimer > 120)
+        if(!GameOver && (GameTimer > 60 || Points >= 300))
         {
             GameOver = true;
             Array.ForEach(FindObjectsOfType<Rock>(), r => Destroy(r.gameObject));
@@ -65,7 +66,9 @@ public class BoatGameMaster : MonoBehaviour {
         Points += points;
         if (Points < 0)
             Points = 0;
-        PointsText.text = "Points: " + Points;
+        if (Points > 300)
+            Points = 300;
+        PointsText.text = Points > 200 ? Points + "/300" : Points + "/200";
     }
 
     private IEnumerator EndGame()
