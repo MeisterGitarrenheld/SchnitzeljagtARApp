@@ -25,6 +25,10 @@ public class GlobalGameManager : MonoBehaviour {
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            if(MainGameManager.Instance != null)
+            {
+                MainGameManager.Instance.SaveLoadManager.ResetSave();
+            }
             if (SceneManager.GetActiveScene().buildIndex > 0)
                 SceneManager.LoadScene(0);
             else

@@ -9,21 +9,21 @@ public class GlobalLocationScript : MonoBehaviour
     public Text debugLocationText;
     private GeoPoint startPoint;
 
-    private void Update()
-    {
-        GeoPoint curLoc = GetCurrentLocation();
-        if(startPoint != null)
-        debugLocationText.text = "Latitude: " + curLoc.Latitude + "\n"
-            + "Longitude: " + curLoc.Longitude + "\n" +
-            "Altitude: " + curLoc.Altitude + "\n"
-            + "Distance: " + curLoc.Distance(startPoint);
+    //private void Update()
+    //{
+    //    GeoPoint curLoc = GetCurrentLocation();
+    //    if(startPoint != null)
+    //    debugLocationText.text = "Latitude: " + curLoc.Latitude + "\n"
+    //        + "Longitude: " + curLoc.Longitude + "\n" +
+    //        "Altitude: " + curLoc.Altitude + "\n"
+    //        + "Distance: " + curLoc.Distance(startPoint);
 
-        if((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            || Input.GetMouseButtonDown(0))
-        {
-            startPoint = GetCurrentLocation();
-        }
-    }
+    //    if((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+    //        || Input.GetMouseButtonDown(0))
+    //    {
+    //        startPoint = GetCurrentLocation();
+    //    }
+    //}
 
     public GeoPoint GetCurrentLocation()
     { 

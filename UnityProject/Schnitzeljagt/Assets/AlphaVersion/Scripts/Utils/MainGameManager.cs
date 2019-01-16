@@ -48,6 +48,11 @@ public class MainGameManager : MonoBehaviour
         ArCamera.enabled = !ArCamera.enabled; 
     }
 
+    //Only for reset save button, delete later
+    public void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     public void DisplayPlainText(string lText, string rText, GameObject lChar, GameObject rChar)
     {
