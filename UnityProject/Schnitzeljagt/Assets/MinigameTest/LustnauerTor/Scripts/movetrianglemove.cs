@@ -21,7 +21,7 @@ public class movetrianglemove : MonoBehaviour
     void MakeTheMove()
     {
         RightMaybe = true;
-        float moveOnX = Input.GetAxis("Horizontal");
+        float moveOnX = Input.GetAxis("Mouse X");
         Vector3 movement = new Vector3(moveOnX * speed, gameObject.GetComponent<Rigidbody2D>().velocity.y, 0);
         movement *= Time.deltaTime;
         //FlipFlip(moveOnX);
@@ -36,11 +36,13 @@ public class movetrianglemove : MonoBehaviour
             GetComponent<Animator>().SetBool("RightMaybe", false);
         }
 
-        if (Input.GetKeyDown("space") && JumpCount < 1)
+        if (Input.GetMouseButtonDown(0) && JumpCount < 1)
         {
             Jump();
             JumpCount += 1;
         }
+
+
     }
     void Jump()
     {
