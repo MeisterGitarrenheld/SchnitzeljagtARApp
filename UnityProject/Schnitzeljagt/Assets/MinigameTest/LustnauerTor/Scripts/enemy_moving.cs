@@ -47,5 +47,6 @@ public class enemy_moving : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         healthyhealth.health -= 1;
+        points.counter -= 10;
     }
 }
