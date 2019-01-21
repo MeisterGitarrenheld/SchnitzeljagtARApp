@@ -8,5 +8,10 @@ public class BearThrowingObject : MonoBehaviour {
 	void Start () {
         Destroy(gameObject, 10f);
 	}
-	
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject, 0.5f);
+    }
+
 }

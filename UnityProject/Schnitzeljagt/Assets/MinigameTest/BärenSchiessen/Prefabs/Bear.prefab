@@ -52,8 +52,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.2218947, y: 1.8306074, z: 1}
+  m_Center: {x: 0.10250783, y: -0.077198505, z: 0}
 --- !u!114 &114298490378397256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,6 +66,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 3
+  currentLane: 0
+  BearSprites:
+  - {fileID: 21300000, guid: 2a8db67d14619ed428b7e2ddb68acc73, type: 3}
+  - {fileID: 21300000, guid: e6df5b8bfdc01c04ba3655e8344f2362, type: 3}
 --- !u!212 &212596909789180912
 SpriteRenderer:
   m_ObjectHideFlags: 1

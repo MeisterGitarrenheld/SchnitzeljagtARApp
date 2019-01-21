@@ -31,7 +31,7 @@ public class BearSchleuder : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
         {
-            Rigidbody throwRb = Instantiate(Random.Range(0, 2) == 0 ? Meat : Honey, transform.position, transform.rotation).GetComponent<Rigidbody>();
+            Rigidbody throwRb = Instantiate(Random.Range(0, 4) > 0 ? Meat : Honey, transform.position, transform.rotation).GetComponent<Rigidbody>();
             ForceVector = -ForceVector;
             ForceVector.z = ForceVector.y;
             //print(ForceVector);

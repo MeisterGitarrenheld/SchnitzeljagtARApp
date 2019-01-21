@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Bear : MonoBehaviour {
 
-
+    BearGameMaster bgm;
     public float MoveSpeed;
 
-    
+    public int currentLane;
+    public Sprite[] BearSprites;
+
 	void Start () {
+        bgm = BearGameMaster.Instance;
         Destroy(gameObject, 30);
 	}
 	
@@ -20,13 +23,18 @@ public class Bear : MonoBehaviour {
     {
         if (other.CompareTag("Meat"))
         {
-            Destroy(gameObject);
+            bgm.CollectPoints(10 + currentLane * 10);
+            GetComponent<Collider>().enabled = false;
+            MoveSpeed = 0.3f;
+            Destroy(gameObject, 1);
+            GetComponent<SpriteRenderer>().sprite = BearSprites[0];
             Destroy(other.gameObject);
         }
-        else if (other.CompareTag("Honey"))
+        else if (other.CompareTag("Honey") && MoveSpeed > 0)
         {
-            Destroy(gameObject, 5f);
-            MoveSpeed = 0;
+            bgm.CollectPoints(30 + currentLane * 10);
+            bgm.CollectHoney(currentLane);
+            GetComponent<SpriteRenderer>().sprite = BearSprites[1];
             Destroy(other.gameObject);
         }
     }

@@ -41,6 +41,10 @@ public class FrageMaster : MonoBehaviour
     private Frage currentFrage;
     private bool gameOver;
 
+    private bool fiftyFifty;
+    private bool trivia;
+    private bool internet;
+    List<int> wrongAnswers;
 
     void Start()
     {
@@ -72,39 +76,24 @@ public class FrageMaster : MonoBehaviour
 
     void NewQuestion()
     {
-        int questionSelect = Random.Range(0, 5);
+        wrongAnswers = new List<int>();
+        for (int i = 1; i < 5; i++)
+            FrageUICanvas.GetChild(i).gameObject.SetActive(true);
+        int questionSelect = Random.Range(0, 2);
         switch (questionSelect)
         {
             default:
             case 0:
                 currentFrage = new Frage(
-                "Wer hat an der Uhr gedreht?",
-                new string[] { "Jerry" }, new string[] { "Mickey Mouse", "Lucky Luke", "Bullet Bill" },
+                "Worin war der heutige Hölderlinturm im Ursprung integriert?",
+                new string[] { "In die Stadtmauer" }, new string[] { "In das alte Klinikum", "In die neue Aula", "In die Irrenanstalt" },
                 1);
                 break;
             case 1:
                 currentFrage = new Frage(
-                "Ist es wirklich schon so spät?",
-                new string[] { "Nein!", "Nope" }, new string[] { "Sag ich dir doch nicht, du Affe.", "Hmm, kp." },
-                2);
-                break;
-            case 2:
-                currentFrage = new Frage(
-                "Wer, wie, was?",
-                new string[] { "Wieso?", "Weshalb?", "Warum?" }, new string[] { "Darum!" },
-                3);
-                break;
-            case 3:
-                currentFrage = new Frage(
-                "Was ist ein die Hälfte von einem Halben?",
-                new string[] { "Hal" }, new string[] { "Glückwunsch", "Dreißig", "Spaßig" },
+                "Ab welchem Jahrhundert wurde aus dem heutigen Hölderlinturm ein Wohngebäude?",
+                new string[] { "18. Jahrhundert"}, new string[] { "17. Jahrhundert", "16. Jahrhundert", "19. Jahrhundert" },
                 1);
-                break;
-            case 4:
-                currentFrage = new Frage(
-                "Wer flog übers Kuckucksnest",
-                new string[] { "Jack Nickolson", "Einer" }, new string[] { "Niemand.", "Weder noch" },
-                2);
                 break;
         }
 
@@ -124,6 +113,7 @@ public class FrageMaster : MonoBehaviour
         {
             FrageUICanvas.GetChild(freeNums[i]).GetComponentInChildren<Text>().text = currentFrage.FalseAnswer[i];
             FrageUICanvas.GetChild(freeNums[i]).GetComponent<Answer>().correct = false;
+            wrongAnswers.Add(freeNums[i]);
         }
     }
 
@@ -136,5 +126,31 @@ public class FrageMaster : MonoBehaviour
 
         timer = MaxTime;
         NewQuestion();
+    }
+
+    public void FiftyFifty()
+    {
+        if (fiftyFifty)
+            return;
+        for(int i = 0; i < 2; i++)
+        {
+            int rndWrongAnswer = wrongAnswers[Random.Range(0, wrongAnswers.Count)];
+            FrageUICanvas.GetChild(rndWrongAnswer).gameObject.SetActive(false);
+            wrongAnswers.Remove(rndWrongAnswer);
+        }
+        fiftyFifty = true;
+    }
+
+    public void Internet()
+    {
+        if (internet)
+            return;
+        PlayerPrefs.SetString("Internet", "Active");
+    }
+
+    public void Trivia()
+    {
+        if (trivia)
+            return;
     }
 }
