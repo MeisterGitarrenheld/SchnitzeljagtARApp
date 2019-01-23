@@ -12,6 +12,7 @@ public class BearGameMaster : MonoBehaviour {
 
     public GameObject Bear;
     public Transform[] BearSpawn;
+    public Transform[] BearGoal;
     public bool[] LaneBlocked;
     private float[] releaseBlocking;
 
@@ -43,6 +44,7 @@ public class BearGameMaster : MonoBehaviour {
             {
                 Bear b = Instantiate(Bear, BearSpawn[selectedLane].position + Vector3.up * 0.7f, Quaternion.identity).GetComponent<Bear>();
                 b.currentLane = selectedLane;
+                b.goal = BearGoal[selectedLane];
                 timer = Random.Range(1.5f, 4f);
             }
             for(int i = 0; i< 3; i++)

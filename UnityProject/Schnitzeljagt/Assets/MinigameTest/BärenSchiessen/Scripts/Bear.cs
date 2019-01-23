@@ -8,6 +8,7 @@ public class Bear : MonoBehaviour {
     public float MoveSpeed;
 
     public int currentLane;
+    public Transform goal;
     public Sprite[] BearSprites;
 
 	void Start () {
@@ -16,7 +17,7 @@ public class Bear : MonoBehaviour {
 	}
 	
 	void Update () {
-        transform.position += Vector3.right * Time.deltaTime * MoveSpeed;
+        transform.position += (goal.position - transform.position).normalized * Time.deltaTime * MoveSpeed;
 	}
 
     private void OnTriggerEnter(Collider other)
