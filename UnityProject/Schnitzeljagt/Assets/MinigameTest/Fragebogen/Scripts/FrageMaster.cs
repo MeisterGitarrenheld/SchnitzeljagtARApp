@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public struct Frage
 {
@@ -36,6 +38,26 @@ public class FrageMaster : MonoBehaviour
 
     public Transform FrageUICanvas;
     public float MaxTime;
+    public Text AnswerFeedbackText;
+    public Text TimerText;
+    public Button fiftyButton;
+    public Button internetButton;
+    public Button triviaButton;
+
+    /// <summary>
+    /// Progression overall in the game
+    /// </summary>
+    public int currentLevel;
+    public int currentPoints;
+    /// <summary>
+    /// Kind of questions that will be asked 1, 2 or 3
+    /// </summary>
+    public int currentTier;
+
+    private int currentQuestionIndex;
+
+    private List<Frage>[] tierQuestions;
+    private List<int>[] tierAsked;
 
     private float timer;
     private Frage currentFrage;
@@ -51,26 +73,36 @@ public class FrageMaster : MonoBehaviour
         Instance = this;
         timer = MaxTime;
 
+        ReadXmlQuestion();
+
+        if(PlayerPrefs.GetString("Internet") == "Active")
+        {
+            currentLevel = PlayerPrefs.GetInt("Level");
+            currentPoints = PlayerPrefs.GetInt("Points");
+            currentTier = PlayerPrefs.GetInt("Tier");
+            fiftyButton.interactable = PlayerPrefs.GetInt("fifty") == 0;
+            internetButton.interactable = PlayerPrefs.GetInt("internet") == 0;
+            triviaButton.interactable = PlayerPrefs.GetInt("trivia") == 0;
+            AnswerFeedbackText.text = "\nFrage " + (currentLevel + 1) + "\nLevel " + (currentTier + 1);
+        }
+
+        PlayerPrefs.SetString("Internet", "Inactive");
         NewQuestion();
     }
 
     void Update()
     {
-        if(timer < 0)
+        if (timer < 0)
         {
             print("GameOver");
-            timer = MaxTime;
-            NewQuestion();
+            AnswerFeedbackText.text = "Zu lange.";
+            PlayerPrefs.SetString("MGameState", "lost");
+            PlayerPrefs.SetString("Internet", "Inactive");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         timer -= Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            timer = MaxTime;
-            NewQuestion();
-        }
-
+        TimerText.text = (timer).ToString().Split('.')[0];
     }
 
 
@@ -79,23 +111,12 @@ public class FrageMaster : MonoBehaviour
         wrongAnswers = new List<int>();
         for (int i = 1; i < 5; i++)
             FrageUICanvas.GetChild(i).gameObject.SetActive(true);
-        int questionSelect = Random.Range(0, 2);
-        switch (questionSelect)
-        {
-            default:
-            case 0:
-                currentFrage = new Frage(
-                "Worin war der heutige Hölderlinturm im Ursprung integriert?",
-                new string[] { "In die Stadtmauer" }, new string[] { "In das alte Klinikum", "In die neue Aula", "In die Irrenanstalt" },
-                1);
-                break;
-            case 1:
-                currentFrage = new Frage(
-                "Ab welchem Jahrhundert wurde aus dem heutigen Hölderlinturm ein Wohngebäude?",
-                new string[] { "18. Jahrhundert"}, new string[] { "17. Jahrhundert", "16. Jahrhundert", "19. Jahrhundert" },
-                1);
-                break;
-        }
+
+        currentQuestionIndex = Random.Range(0, tierQuestions[currentTier].Count);
+        while (tierAsked[currentTier].Contains(currentQuestionIndex))
+            currentQuestionIndex = Random.Range(0, tierQuestions[currentTier].Count);
+
+        currentFrage = tierQuestions[currentTier][currentQuestionIndex];
 
         FrageUICanvas.GetChild(0).GetComponentInChildren<Text>().text = currentFrage.Question;
 
@@ -120,12 +141,28 @@ public class FrageMaster : MonoBehaviour
     public void Answered(bool correct)
     {
         if (correct)
-            print("Right Answer.");
+        {
+            tierAsked[currentTier].Add(currentQuestionIndex); 
+            currentLevel++;
+            currentTier = currentLevel / 5;
+            AnswerFeedbackText.text = "Richtig!\nFrage " + (currentLevel + 1) + "\nLevel " + (currentTier + 1);
+        }
         else
-            print("Wrong Answer");
+        {
 
+            AnswerFeedbackText.text = "Ne, du.";
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            PlayerPrefs.SetString("MGameState", "lost");
+        }
+        PlayerPrefs.SetString("Internet", "Inactive");
         timer = MaxTime;
-        NewQuestion();
+        if(currentLevel <= 15)
+            NewQuestion();
+        else
+        {
+            PlayerPrefs.SetString("MGameState", "won");
+            SceneManager.LoadScene("Intro");
+        }
     }
 
     public void FiftyFifty()
@@ -145,12 +182,78 @@ public class FrageMaster : MonoBehaviour
     {
         if (internet)
             return;
+        internet = true;
         PlayerPrefs.SetString("Internet", "Active");
+        PlayerPrefs.SetInt("Tier", currentTier);
+        PlayerPrefs.SetInt("Level", currentLevel);
+        PlayerPrefs.SetInt("Points", currentPoints);
+        PlayerPrefs.SetInt("fifty", fiftyFifty ? 1 : 0);
+        PlayerPrefs.SetInt("internet", internet ? 1 : 0);
+        PlayerPrefs.SetInt("trivia", trivia ? 1 : 0);
     }
 
     public void Trivia()
     {
         if (trivia)
             return;
+        trivia = true;
     }
+
+    void ReadXmlQuestion()
+    {
+        tierQuestions = new List<Frage>[3];
+        tierAsked = new List<int>[3];
+        tierQuestions[0] = new List<Frage>();
+        tierQuestions[1] = new List<Frage>();
+        tierQuestions[2] = new List<Frage>();
+        tierAsked[0] = new List<int>();
+        tierAsked[1] = new List<int>();
+        tierAsked[2] = new List<int>();
+
+        string xmlDocumentName = "Fragen1";
+        TextAsset xmlAsset = (TextAsset)Resources.Load(xmlDocumentName, typeof(TextAsset));
+
+        XmlDocument xmlDocument = new XmlDocument();
+        xmlDocument.LoadXml(xmlAsset.text);
+
+        foreach (XmlNode questionNode in xmlDocument.GetElementsByTagName("question"))
+        {
+            string question = questionNode.InnerText;
+            int tier = int.Parse(questionNode.Attributes["level"].Value) - 1;
+            List<string> correctAnswer = new List<string>();
+            List<string> falseAnswers = new List<string>();
+            foreach (XmlNode answerNode in questionNode.ChildNodes)
+            {
+                if (answerNode.Name == "antwort")
+                {
+                    if (answerNode.Attributes["type"].Value == "w")
+                        correctAnswer.Add(answerNode.InnerText);
+                    else
+                        falseAnswers.Add(answerNode.InnerText);
+                }
+            }
+            tierQuestions[tier].Add(new Frage(
+                        question,
+                        correctAnswer.ToArray(),
+                        falseAnswers.ToArray(),
+                        correctAnswer.Count
+                ));
+        }
+
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            Debug.Log("Paused");
+            
+        }
+        else
+        {
+            Debug.Log("resumed");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
 }

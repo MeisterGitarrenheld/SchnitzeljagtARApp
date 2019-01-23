@@ -1,4 +1,6 @@
-<question num="1" qType="MC" level="1"> <text>Worin war der heutige Hölderlinturm im Ursprung integriert?</text>
+<fragenspiel>
+  
+  <question num="1" qType="MC" level="1"> <text>Worin war der heutige Hölderlinturm im Ursprung integriert?</text>
         <antwort type="w"> In die Stadtmauer </antwort>
         <antwort type="f"> In das alte Klinikum </antwort>
         <antwort type="f"> In die neue Aula </antwort>
@@ -277,3 +279,4 @@
         <antwort type="f"> Wirtschaftswissenschaften </antwort>
         <antwort type="f"> Physiologie </antwort>
     </question>
+</fragenspiel>
