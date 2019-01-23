@@ -22,6 +22,11 @@ public class EBPlayer : MonoBehaviour {
 	void Update () {
         if(Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
+            SpawnPosition = Input.touchCount > 0 ? Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) :
+                                         Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (SpawnPosition.y < 7)
+                SpawnPosition.y = 7;
+            SpawnPosition.z = EBGM.Instance.Eberhardt.position.z;
             currentZiegel = Instantiate(Ziegel, 
                                         SpawnPosition, 
                                         Quaternion.identity).transform;
@@ -29,8 +34,13 @@ public class EBPlayer : MonoBehaviour {
         }
         if(currentZiegel != null && (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)))
         {
-            currentZiegel.position = SpawnPosition;
-            Vector3 velocity = Vector3.up * Input.GetAxis("Mouse Y") * velocityMultiplier + Vector3.right * Input.GetAxis("Mouse X") * velocityMultiplier + Vector3.forward * zGeschw;
+            Vector3 mouseposition = Input.touchCount > 0 ? Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) :
+                                         Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (mouseposition.y < 7)
+                mouseposition.y = 7;
+            mouseposition.z = EBGM.Instance.Eberhardt.position.z;
+            currentZiegel.position = mouseposition;
+            Vector3 velocity = Vector3.zero;// Vector3.up * Input.GetAxis("Mouse Y") * velocityMultiplier + Vector3.right * Input.GetAxis("Mouse X") * velocityMultiplier + Vector3.forward * zGeschw;
             if (velocity.magnitude > MaxSpeed.magnitude)
                 MaxSpeed = velocity;
         }

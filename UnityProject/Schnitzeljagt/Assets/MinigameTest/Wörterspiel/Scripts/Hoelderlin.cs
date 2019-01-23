@@ -8,6 +8,10 @@ public class Hoelderlin : MonoBehaviour {
     public Sprite Up;
     public Sprite Down;
 
+    public float xDirL;
+    public float xDirR;
+
+
     [HideInInspector]
     public Transform SpeechBubble;
 
@@ -38,7 +42,7 @@ public class Hoelderlin : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         SpeechBubble.position = transform.position + new Vector3(1, 0, 0);
         SpeechBubble.GetComponent<Rigidbody2D>().gravityScale = 1;
-        SpeechBubble.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-7f, 10f), Random.Range(0, 2f));
+        SpeechBubble.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(xDirL, xDirR), Random.Range(0, 2f));
         sr.sprite = Down;
         yield return new WaitForSeconds(1.7f);
         sr.sprite = Idle;

@@ -68,7 +68,15 @@ public class Master : MonoBehaviour
             yield return null;
         }
         var text = Instantiate(EndScreen, Vector3.zero, Quaternion.identity).GetComponentInChildren<Text>();
-        text.text = "Hurra du hast gewonnen! \n Der coole Satz ist cool! \n " + Truhe.PointsText.text;
+        text.text = "Ach! wo bist du, <b>Liebende</b>, nun? Sie haben mein Auge / \n" + 
+            "Mir genommen, mein <b>Herz</b> hab ich verloren mit ihr. / \n " + 
+            "Darum irr ich umher, und wohl, wie die <b>Schatten</b>, so muß ich / \n" + 
+            "<b>Leben</b> und <b>sinnlos</b> dünkt lange das Übrige mir. / \n" +
+            "Danken möcht ich, aber wofür? verzehret das Letzte / \n" + 
+            "Selbst die <b>Erinnerung</b> nicht? nimmt von der Lippe denn nicht / \n" +
+            "Bessere Rede mir der Schmerz, und lähmet ein Fluch nicht / \n" + 
+            "Mir die Sehnen und wirft, wo ich beginne, mich weg? \n \n"
+            + Truhe.PointsText.text;
     }
 
 }

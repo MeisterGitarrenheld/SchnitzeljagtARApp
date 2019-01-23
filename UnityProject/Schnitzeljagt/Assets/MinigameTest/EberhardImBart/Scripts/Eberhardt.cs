@@ -59,15 +59,16 @@ public class Eberhardt : MonoBehaviour {
 
     private IEnumerator EndGame()
     {
-        for (int i = 0; i < 100; i++)
-        {
-            FadeScreen.color = new Color(0, 0, 0, FadeScreen.color.a + 1 / 150f);
-            yield return null;
-        }
+        //for (int i = 0; i < 100; i++)
+        //{
+        //    FadeScreen.color = new Color(0, 0, 0, FadeScreen.color.a + 1 / 150f);
+        //    yield return null;
+        //}
         var text = Instantiate(EndScreen, Vector3.zero, Quaternion.identity).GetComponentInChildren<Text>();
-        text.text = "Hurra du hast gewonnen! \n " + GameObject.Find("PointsText").GetComponent<Text>().text;
+        text.text = "Hurra du hast gewonnen! \n " + "Punkte: " + GameObject.Find("PointsText").GetComponent<Text>().text;
 
         GameObject.Find("PointsText").transform.parent.gameObject.SetActive(false);
+        yield return null;
     }
 
 

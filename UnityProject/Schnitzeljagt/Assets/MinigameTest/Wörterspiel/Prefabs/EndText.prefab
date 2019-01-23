@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 224314967822373856}
   - component: {fileID: 222736399741310174}
   - component: {fileID: 114242796011434358}
+  - component: {fileID: 114465415320299728}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -100,8 +101,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1895640075564224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 33.71412, y: 63.635403, z: 33.71412}
+  m_LocalPosition: {x: 5.97, y: 1.1, z: 0}
+  m_LocalScale: {x: 2.8552065, y: 3.6653996, z: 33.71412}
   m_Children: []
   m_Father: {fileID: 4723817742180712}
   m_RootOrder: 0
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -127,10 +128,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 55
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -160,6 +161,20 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114465415320299728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1463645174505284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114560377127022142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,7 +246,7 @@ SpriteRenderer:
   m_SortingLayerID: 2124021351
   m_SortingLayer: 1
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: b89b493f151d24969bb361bb84233dc9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eeab1f4a9421b414d9d1577aad79343d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -284,7 +299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.1, y: -60.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 579.3, y: 923.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224385455594318860

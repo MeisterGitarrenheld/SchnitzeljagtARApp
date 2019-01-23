@@ -43,7 +43,7 @@ public class Truhe : MonoBehaviour
     void Update()
     {
 
-        float horizontalMovement = Input.GetAxis("Mouse X") * MovementSpeed * Time.deltaTime * 60f;
+        float horizontalMovement = (Input.GetAxis("Mouse X") + Input.GetAxis("Horizontal")*10f) * MovementSpeed * Time.deltaTime * 60f;
         
         Vector2 movement = new Vector2(horizontalMovement, 0);
         rb.velocity = movement;

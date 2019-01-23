@@ -9,8 +9,12 @@ public class EBGM : MonoBehaviour
     private float timer;
     private Text timeText;
 
+    public static EBGM Instance;
+    public Transform Eberhardt;
+
     void Start()
     {
+        Instance = this;
         timeText = GameObject.Find("TimeText").GetComponent<Text>();
     }
 
