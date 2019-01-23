@@ -1037,7 +1037,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1332740664}
-  - {fileID: 1821265888}
   - {fileID: 725625049}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -2057,7 +2056,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: Start Game
 --- !u!222 &524777307
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2636,7 +2635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &725625049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2649,12 +2648,12 @@ RectTransform:
   m_Children:
   - {fileID: 524777305}
   m_Father: {fileID: 313933160}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -188.9, y: -674.1}
-  m_SizeDelta: {x: 502.3, y: 231.8}
+  m_AnchoredPosition: {x: -5.3025, y: 5.0875}
+  m_SizeDelta: {x: 934.21, y: 1761.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &725625050
 MonoBehaviour:
@@ -2675,10 +2674,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.15294118}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.16078432}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3921,6 +3920,7 @@ GameObject:
   - component: {fileID: 1332740664}
   - component: {fileID: 1332740666}
   - component: {fileID: 1332740665}
+  - component: {fileID: 1332740667}
   m_Layer: 5
   m_Name: GameImage
   m_TagString: Untagged
@@ -3943,8 +3943,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -126, y: 539.4}
-  m_SizeDelta: {x: 692.8, y: 692.8}
+  m_AnchoredPosition: {x: -5.3, y: 5.1}
+  m_SizeDelta: {x: 934.2, y: 1761.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1332740665
 MonoBehaviour:
@@ -3980,6 +3980,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332740663}
   m_CullTransparentMesh: 0
+--- !u!114 &1332740667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1332740663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0fa97d683ad1d449fad1096aa14ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartButton: {fileID: 725625048}
+  Images:
+  - {fileID: 21300000, guid: de5fbf5bb04754a6cbd5a8e71c2ec61b, type: 3}
+  - {fileID: 21300000, guid: 3f1e031abe0d8435b852f4041f22a8d6, type: 3}
+  - {fileID: 21300000, guid: 3d740aa0ff1c644eb9435edc0219b7a4, type: 3}
+  - {fileID: 21300000, guid: b7bc8447a865a4167939ed9aef44f19b, type: 3}
+  - {fileID: 21300000, guid: 2402a7ca9b47546a1b571fd6abd41815, type: 3}
 --- !u!1 &1386527998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4774,100 +4792,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1821265887
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1821265888}
-  - component: {fileID: 1821265890}
-  - component: {fileID: 1821265889}
-  - component: {fileID: 1821265891}
-  m_Layer: 5
-  m_Name: Description
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1821265888
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1821265887}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 313933160}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.9, y: -164.2}
-  m_SizeDelta: {x: 887.8, y: 534.4}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1821265889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1821265887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 62
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 83
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'This is a minigame with many functionalities!
-
-    You can play it and have a great time or you can not play it and still have a
-    great time, but less than if you played the game.'
---- !u!222 &1821265890
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1821265887}
-  m_CullTransparentMesh: 0
---- !u!114 &1821265891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1821265887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca6df5fa27f620443a0ae3c6fee2c5bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeText: Das ist ein Minispiel mit vielen Funktionen! Du kannst es spielen oder nicht.
-  EnText: This is a minigame with many functionalities! You can play it and have a
-    great time or you can not play it and still have a great time, but less than if
-    you played the game.
 --- !u!1 &1945457915
 GameObject:
   m_ObjectHideFlags: 0
