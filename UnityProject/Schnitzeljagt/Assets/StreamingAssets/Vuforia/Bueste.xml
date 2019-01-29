@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="Wilhelm" size="1.000000 0.667995" />
+    <ImageTarget name="Weizsaecker" size="1.000000 0.667995" />
+    <ImageTarget name="VenusMedici" size="1.000000 1.497018" />
+    <ImageTarget name="VenusCapitol" size="1.000000 1.497018" />
+    <ImageTarget name="Schiller" size="1.000000 0.667995" />
+    <ImageTarget name="Perikles" size="1.000000 0.667995" />
+    <ImageTarget name="Miltiades" size="1.000000 0.667995" />
+    <ImageTarget name="Homer" size="1.000000 0.667995" />
+    <ImageTarget name="Hoelderlin" size="1.000000 0.667995" />
+    <ImageTarget name="Hoelderlin2" size="1.000000 0.667995" />
+    <ImageTarget name="Eberhard" size="1.000000 0.667995" />
+    <ImageTarget name="Apollonio" size="1.000000 0.667995" />
+    <ImageTarget name="Aphrodite" size="1.000000 0.667995" />
     <ImageTarget name="GoetheTest" size="1.000000 0.667995" />
     <ImageTarget name="DerTraumTest_staerkereKontur" size="1.000000 1.497018" />
     <ImageTarget name="DerTraumTest2" size="1.000000 1.497018" />
