@@ -19,6 +19,10 @@ public class AssetManager : MonoBehaviour {
             case "Auktorialer_Guide":
                 return Characters[2];
                 break;
+            case "Nauclerus":
+                return Characters[3];
+            case "Spielbeschreibung":
+                return Characters[4];
             default:
                 break;
         }

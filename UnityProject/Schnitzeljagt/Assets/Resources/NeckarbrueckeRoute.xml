@@ -15,7 +15,7 @@ Wird jedoch ein Kahn mit Kindern getroffen (egal wie groß), werden 10 Punkte ab
         </geopunkt>
 
         <characters>
-            <character name="Eberhard" tag="E"/>
+            <character name="Eberhard_Guide" tag="E"/>
             <character name="Nauclerus" tag="N"/>
             <character name="Spielbeschreibung" tag="X"/>
         </characters>

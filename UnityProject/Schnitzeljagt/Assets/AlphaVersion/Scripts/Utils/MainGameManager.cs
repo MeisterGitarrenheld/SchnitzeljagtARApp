@@ -36,7 +36,7 @@ public class MainGameManager : MonoBehaviour
 
     void Update()
     {
-        if (AVInputHandler.PointerDown())
+        if (AVInputHandler.PointerDown() && AVInputHandler.PointerPosition().y > 200 && AVInputHandler.PointerPosition().y < 1000)
         {
 
             ChapterManager.Progress();

@@ -43,7 +43,9 @@ public class AVInputHandler : MonoBehaviour {
 
     public static Vector2 PointerPosition()
     {
-        return Vector2.zero;
+        return Input.touchCount > 0 ? Input.GetTouch(0).position : (Vector2)Input.mousePosition;
     }
+
+
 
 }
