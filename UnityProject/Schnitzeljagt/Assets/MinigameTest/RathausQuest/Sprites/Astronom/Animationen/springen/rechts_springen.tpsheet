@@ -1,0 +1,20 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:613a9223f48213d5e4f2c12db4f7906a:5d9844056ddea8bad56959cf0ca98bfd:72410e8128877ca9f7360b72c02534ed$
+#
+:format=40300
+:texture=rechts_springen.png
+:size=256x256
+:pivotpoints=enabled
+:borders=disabled
+
+Astronom Gehen Rechts 1;0;170;31;86; 0.43548387096774194;0.5813953488372092; 0;0;0;0; 4;31;0;0;0;0;86;31;86; 2;1;2;3;0;1;3
+Astronom Gehen Rechts 2;31;170;31;86; 0.43548387096774194;0.5813953488372092; 0;0;0;0; 4;31;0;0;0;0;86;31;86; 2;1;2;3;0;1;3
+Astronom Gehen Rechts 3;62;170;31;86; 0.43548387096774194;0.5813953488372092; 0;0;0;0; 4;31;0;0;0;0;86;31;86; 2;1;2;3;0;1;3
+Astronom Springen Rechts — копия (2);93;162;67;94; 0.582089552238806;0.4893617021276596; 0;0;0;0; 5;67;7;25;0;0;57;25;94;51;94; 3;2;3;4;0;2;4;0;1;2
+Astronom Springen Rechts — копия;160;162;67;94; 0.582089552238806;0.4893617021276596; 0;0;0;0; 5;67;7;25;0;0;57;25;94;51;94; 3;2;3;4;0;2;4;0;1;2
+Astronom Springen Rechts;0;68;67;94; 0.582089552238806;0.4893617021276596; 0;0;0;0; 5;67;7;25;0;0;57;25;94;51;94; 3;2;3;4;0;2;4;0;1;2

@@ -10,6 +10,9 @@ public class JumpThroughPlayer : MonoBehaviour {
     private Rigidbody rb;
     private BoxCollider col;
 
+    public bool facingLeft, isWalking;
+
+
 	void Start ()
     {
         rb = GetComponent<Rigidbody>();
@@ -18,13 +21,25 @@ public class JumpThroughPlayer : MonoBehaviour {
 	
 	void Update ()
     {
+        GetComponent<Animator>().SetBool("isWalking", true);
         float xMove = Input.GetAxis("Horizontal");
 
-        transform.position += Vector3.right * xMove * MoveSpeed * Time.deltaTime;
+        if (xMove < 0)
+        {
+            GetComponent<Animator>().SetBool("facingLeft", true);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("facingLeft", false);
+        }
 
+        transform.position += Vector3.right * xMove * MoveSpeed * Time.deltaTime;
+        
         if(RaycastGround() && rb.velocity.y <= 0)
         {
+            
             rb.velocity = new Vector3(rb.velocity.x, JumpForce);
+            GetComponent<Animator>().SetBool("isWalking", false);
         }
 	}
 
