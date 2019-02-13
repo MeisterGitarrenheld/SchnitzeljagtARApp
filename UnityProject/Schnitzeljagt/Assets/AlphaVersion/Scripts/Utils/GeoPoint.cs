@@ -33,4 +33,9 @@ public class GeoPoint
     {
         return (Distance(otherPoint) < accuracy) && (heightAccuracy == 0 || Mathf.Abs((float)(Altitude - otherPoint.Altitude)) < heightAccuracy);
     }
+
+    public override string ToString()
+    {
+        return "Lat: " + Latitude + " Long: " + Longitude + " Alt: " + Altitude;
+    }
 }
