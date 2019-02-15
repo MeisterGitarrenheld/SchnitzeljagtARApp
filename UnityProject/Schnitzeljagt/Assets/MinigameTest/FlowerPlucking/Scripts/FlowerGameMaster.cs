@@ -37,6 +37,7 @@ public class FlowerGameMaster : MonoBehaviour {
 
     private bool flowerSpawned;
     private double currentSpawnChance;
+    private double currentDistaceSpawnChance;
 
     private void Start()
     {
@@ -57,15 +58,13 @@ public class FlowerGameMaster : MonoBehaviour {
         }
         else
         {
-            if (Random.Range(0.0f, 100.0f) < currentSpawnChance)
+            if (Random.Range(30.0f, 100.0f) < currentSpawnChance + currentDistaceSpawnChance)
             {
                 flowerSpawned = true;
-                Instantiate(FlowerInstance);
+                var flower = Instantiate(FlowerInstance, FlowerCamera.transform.position + FlowerCamera.transform.forward * 5, Quaternion.identity);
+                flower.transform.LookAt(flower.transform.position + (flower.transform.position - FlowerCamera.transform.position));
             }
-            if (lastLocation.Distance(locationScript.GetCurrentLocation()) / DistanceDivisor < NextFlowerDistance)
-                currentSpawnChance = -1.0;
-            else
-                currentSpawnChance = lastLocation.Distance(locationScript.GetCurrentLocation()) / DistanceDivisor;
+            currentDistaceSpawnChance = lastLocation.Distance(locationScript.GetCurrentLocation()) / DistanceDivisor;
 
             currentSpawnChance += Time.deltaTime;
         }
@@ -73,12 +72,13 @@ public class FlowerGameMaster : MonoBehaviour {
             "Location:" + locationScript.GetCurrentLocation() +" \n" +
             "Last Location: " + lastLocation +" \n" +
             "Distance:" + lastLocation.Distance(locationScript.GetCurrentLocation()) +" \n" +
-            "Chance: " + currentSpawnChance;
+            "Chance: " + currentSpawnChance + currentDistaceSpawnChance;
     }
 
 
     public void PluckFlower(Flower flowerPlucked)
     {
+        flowerSpawned = false;
         lastLocation = locationScript.GetCurrentLocation();
         currentSpawnChance = -1.0f;
     }
