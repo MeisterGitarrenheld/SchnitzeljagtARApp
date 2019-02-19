@@ -24,8 +24,11 @@ public class RandomFactManager : MonoBehaviour
         {
             foreach(GeoPoint gp in FactLocations.Keys)
             {
-                if (gp.Compare(mgm.GlobalLocationManager.GetCurrentLocation(), 10/1000f))
+                if (gp.Compare(mgm.GlobalLocationManager.GetCurrentLocation(), 10 / 1000f))
+                {
                     print(FactLocations[gp]);
+                    Handheld.Vibrate();
+                }
             }
             evTimer = EventCheckTimer;
         }

@@ -83,7 +83,7 @@ public class ChapterManager : MonoBehaviour
         {
             PlainText pText = Chapters[SelectedChapter].pTexts[ChapterProgress];
             //print("Text: " + pText.text);
-            mgm.DisplayPlainText(pText.text, pText.text, mgm.CharacterManager.Characters[pText.charID], mgm.CharacterManager.Characters[pText.charID]);
+            mgm.DisplayPlainText(pText.text, mgm.CharacterManager.Characters[pText.charID]);
         }
         else if (Chapters[SelectedChapter].events.ContainsKey(ChapterProgress))
         {
@@ -93,10 +93,13 @@ public class ChapterManager : MonoBehaviour
         {
             mgm.SaveLoadManager.SaveChapterProgress(SelectedChapter, 0, ChapterProgress);
             mgm.StartMiniGame(Chapters[SelectedChapter].mGame[ChapterProgress].miniSpielID);
+            //print("Minigame " + Chapters[SelectedChapter].mGame[ChapterProgress].miniSpielID);
+            //PlayerPrefs.SetString("MGameState", "won");
         }
         else
         {
-            ChapterProgress = 1;
+            mgm.DisplayPlainText("Das Kapitel ist vorbei.", mgm.CharacterManager.Characters["AG"]);
+            ChapterProgress = 0;
             SelectedChapter++;
         }
 

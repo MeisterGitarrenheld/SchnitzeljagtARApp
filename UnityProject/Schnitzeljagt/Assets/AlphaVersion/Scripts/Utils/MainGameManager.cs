@@ -17,8 +17,11 @@ public class MainGameManager : MonoBehaviour
     public GlobalLocationScript GlobalLocationManager { get; private set; }
 
     public VuforiaMonoBehaviour ArCamera;
-
     public Transform PlainTextContainer;
+
+    public int CurrentPoints;
+    // Name of the Xml File
+    public string CurrentSelectedQuest;
 
     void Awake()
     {
@@ -31,12 +34,15 @@ public class MainGameManager : MonoBehaviour
         AssetManager = GetComponent<AssetManager>();
         SaveLoadManager = GetComponent<SaveLoadManager>();
         GlobalLocationManager = GetComponent<GlobalLocationScript>();
+
+        CurrentSelectedQuest = "AltstadtRouteXml";
+        //SaveLoadManager.ResetSave();
     }
 
 
     void Update()
     {
-        if (AVInputHandler.PointerDown() && AVInputHandler.PointerPosition().y > 200 && AVInputHandler.PointerPosition().y < 1000)
+        if (AVInputHandler.PointerDown() && AVInputHandler.PointerPosition().y > 600 && AVInputHandler.PointerPosition().y < 1600)
         {
 
             ChapterManager.Progress();
@@ -54,13 +60,12 @@ public class MainGameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void DisplayPlainText(string lText, string rText, GameObject lChar, GameObject rChar)
+    public void DisplayPlainText(string rText, GameObject rChar)
     {
         PlainTextContainer.gameObject.SetActive(true);
         PlainTextContainer.GetChild(1).GetComponent<Image>().sprite = rChar.GetComponent<Image>().sprite;
         PlainTextContainer.GetChild(1).GetComponent<BouncePulse>().StartAnimating();
         PlainTextContainer.GetChild(3).GetComponentInChildren<Text>().text = rText;
-
     }
 
     public void StartEvent(string eID)
@@ -83,23 +88,28 @@ public class MainGameManager : MonoBehaviour
             case "Boot":
                 SceneManager.LoadScene(3);
                 break;
-            case "Bären":
+            case "Baerenfuetterungsspiel":
                 SceneManager.LoadScene(4);
                 break;
-            case "EberhardImBart":
+            case "Ebarhard_im_Bart":
                 SceneManager.LoadScene(5);
                 break;
             case "FlowerPlucking":
                 SceneManager.LoadScene(6);
                 break;
-            case "Fragebogen":
+            case "Schlossspiel":
                 SceneManager.LoadScene(7);
                 break;
-            case "Rathaus_quest":
-                SceneManager.LoadScene(8);
+            case "Rathausspiel":
+                SceneManager.LoadScene(11);
                 break;
-            case "Lustnaer_Tor":
+            case "Lustnauer_Tor":
                 SceneManager.LoadScene(9);
+                break;
+            case "Augustusspiel":
+                print("Minigame Augustusspiel");
+                PlayerPrefs.SetString("MGameState", "won");
+                SceneManager.LoadScene(1);
                 break;
 
             default: break;

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class IntroManager : MonoBehaviour
 {
 
+    public GameObject HelpWindow;
+
     GlobalGameManager gm;
     float buestenTimer = 0;
     private void Update()
@@ -23,9 +25,22 @@ public class IntroManager : MonoBehaviour
     {
         gm = GlobalGameManager.Instance;
         GameObject.Find("StartGame").GetComponent<Button>().onClick.AddListener(delegate { gm.LoadScene("Game"); });
+        HelpWindow.GetComponentInChildren<Button>().onClick.AddListener(delegate { ToggleHelpWindow(); });
+        GameObject.Find("Help").GetComponent<Button>().onClick.AddListener(delegate { ToggleHelpWindow(); });
         GameObject.Find("MiniGames").GetComponent<Button>().onClick.AddListener(delegate { gm.LoadScene("Minigames"); });
         //print("Button Func" + GlobalGameManager.Instance);
     }
 
-    
+    public void ToggleHelpWindow()
+    {
+        if(HelpWindow.activeInHierarchy)
+        {
+            HelpWindow.SetActive(false);
+        }
+        else
+        {
+            HelpWindow.SetActive(true);
+            HelpWindow.GetComponent<BouncePulse>().StartAnimating();
+        }
+    }
 }

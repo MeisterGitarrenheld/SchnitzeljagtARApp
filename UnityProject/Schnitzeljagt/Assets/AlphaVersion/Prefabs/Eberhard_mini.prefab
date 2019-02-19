@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114030660811404892}
   - component: {fileID: 114143549462989908}
   m_Layer: 5
-  m_Name: RChar 2
+  m_Name: Eberhard_mini
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d0a1a4167391c486d9f5d0a70e859903, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e262e795450d4342b4df2b5e66f402a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

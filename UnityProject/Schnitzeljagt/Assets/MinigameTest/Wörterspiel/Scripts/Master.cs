@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Master : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class Master : MonoBehaviour
     public GameObject EndScreen;
 
     private bool gameOver;
-    
+    private bool canEndGame;
+
 
     void Start()
     {
@@ -56,6 +58,14 @@ public class Master : MonoBehaviour
             Truhe.enabled = false;
             StartCoroutine(EndGame());
         }
+        else if(canEndGame)
+        {
+            if(Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+            {
+                PlayerPrefs.SetString("MGameState", "won");
+                SceneManager.LoadScene(1);
+            }
+        }
 
         timer += Time.deltaTime;
     }
@@ -77,6 +87,7 @@ public class Master : MonoBehaviour
             "Bessere Rede mir der Schmerz, und lähmet ein Fluch nicht / \n" + 
             "Mir die Sehnen und wirft, wo ich beginne, mich weg? \n \n"
             + Truhe.PointsText.text;
+        canEndGame = true;
     }
 
 }

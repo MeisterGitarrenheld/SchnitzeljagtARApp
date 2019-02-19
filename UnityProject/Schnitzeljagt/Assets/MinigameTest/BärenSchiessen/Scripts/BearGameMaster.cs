@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BearGameMaster : MonoBehaviour {
@@ -67,10 +68,12 @@ public class BearGameMaster : MonoBehaviour {
                 PlayerPrefs.SetString("MGameState", "lost");
             GameTimerText.text = "Time: " + 0;
         }
-        else if(!GameOver)
+        else if (!GameOver)
         {
-            GameTimerText.text = "Time: " + (180  - GameTimer).ToString().Split('.')[0];
+            GameTimerText.text = "Time: " + (180 - GameTimer).ToString().Split('.')[0];
         }
+        else if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+            SceneManager.LoadScene(1);
 	}
 
     public void CollectPoints(int points)

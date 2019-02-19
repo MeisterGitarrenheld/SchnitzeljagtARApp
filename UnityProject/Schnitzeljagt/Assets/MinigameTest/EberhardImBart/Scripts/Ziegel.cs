@@ -24,12 +24,12 @@ public class Ziegel : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
-        print("Collision");
+        //print("Collision");
         if (collision.collider.tag == "Character")
         {
             Points += PointsToGet;
             PointsToGet += 5;
-            print("+" + PointsToGet);
+            //print("+" + PointsToGet);
             Destroy(gameObject);
             PointsText.text = "Points: " + Points.ToString();
             collision.collider.GetComponent<Eberhardt>().GoUpEbene();
@@ -39,7 +39,7 @@ public class Ziegel : MonoBehaviour
             Points -= 5;
             if (Points < 0)
                 Points = 0;
-            print("-5");
+            //print("-5");
             Destroy(gameObject);
             PointsText.text = "Points: " + Points.ToString();
         }

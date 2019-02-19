@@ -9,6 +9,9 @@ public class GlobalGameManager : MonoBehaviour {
 
     public int SelectedChapter;
 
+    private float MiniGameSkipTime = 5;
+    private float mGameTimer;
+
     private void Awake()
     {
         if(Instance != null)
@@ -34,6 +37,25 @@ public class GlobalGameManager : MonoBehaviour {
             else
                 Application.Quit();
         }
+        else if (Input.GetKey(KeyCode.K))
+        {
+            if (SceneManager.GetActiveScene().buildIndex > 1)
+            {
+                PlayerPrefs.SetString("MGameState", "won");
+                SceneManager.LoadScene(1);
+            }
+        }
+        if (Input.touchCount > 0 || Input.GetMouseButton(0))
+        {
+            mGameTimer += Time.deltaTime;
+            if (mGameTimer > MiniGameSkipTime)
+            {
+                PlayerPrefs.SetString("MGameState", "won");
+                SceneManager.LoadScene(1);
+            }
+        }
+        else
+            mGameTimer = 0;
     }
 
     public void LoadScene(string sceneName)

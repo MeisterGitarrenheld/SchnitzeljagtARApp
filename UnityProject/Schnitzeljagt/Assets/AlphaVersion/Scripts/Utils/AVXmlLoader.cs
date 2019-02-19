@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Xml;
 using System.IO;
 using System;
+using System.Text.RegularExpressions;
 
 public class AVXmlLoader : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class AVXmlLoader : MonoBehaviour
     void Start()
     {
         mgm = MainGameManager.Instance;
-        xmlDocumentName = "Altstadt_Chapter_1_von_der_Tourist_Info_zum_Holderlinturm";
+        xmlDocumentName = mgm.CurrentSelectedQuest;
 
         xmlAsset = (TextAsset)Resources.Load(xmlDocumentName, typeof(TextAsset));
         LoadXML();
@@ -102,7 +103,7 @@ public class AVXmlLoader : MonoBehaviour
             catch (Exception e)
             {
                 print("Random Fact not loaded.");
-                print(e.StackTrace);
+                print(e.Message);
             }
         }
     }
@@ -132,7 +133,7 @@ public class AVXmlLoader : MonoBehaviour
             if(dialogNode.Name.Equals("plainText"))
             {
                 PlainText pTxt = new PlainText();
-                pTxt.text = dialogNode.InnerText;
+                pTxt.text = Regex.Replace(dialogNode.InnerText, @"\r\n?|\n|\t|[ ]{2,}", " ").Trim();
                 pTxt.charID = dialogNode.Attributes["cTag"].Value;
                 pTexts.Add(int.Parse(dialogNode.Attributes["num"].Value), pTxt);
                 //print(int.Parse(dialogNode.Attributes["num"].Value));
