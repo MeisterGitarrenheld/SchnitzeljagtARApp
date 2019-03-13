@@ -23,6 +23,8 @@ public class AVXmlLoader : MonoBehaviour
 
         xmlAsset = (TextAsset)Resources.Load(xmlDocumentName, typeof(TextAsset));
         LoadXML();
+        print("LoadedXml");
+        print(mgm.ChapterManager.Chapters.Count);
     }
 
     void LoadXML()
@@ -34,7 +36,6 @@ public class AVXmlLoader : MonoBehaviour
         }
         xmlDocument = new XmlDocument();
         xmlDocument.LoadXml(xmlAsset.text);
-
         XmlNodeList childNodes = xmlDocument.ChildNodes[0].ChildNodes;
         foreach (XmlNode node in childNodes)
         {

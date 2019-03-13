@@ -35,7 +35,7 @@ public class MainGameManager : MonoBehaviour
         SaveLoadManager = GetComponent<SaveLoadManager>();
         GlobalLocationManager = GetComponent<GlobalLocationScript>();
 
-        CurrentSelectedQuest = "AltstadtRouteXml";
+        CurrentSelectedQuest = "NeckarbrueckeRoute";
         //SaveLoadManager.ResetSave();
     }
 
@@ -80,12 +80,15 @@ public class MainGameManager : MonoBehaviour
 
     public void StartMiniGame(string mID)
     {
-        switch(mID)
+
+        PlayerPrefs.SetString("MGameState", "won");
+        return;
+        switch (mID)
         {
             case "Wortschatz":
                 SceneManager.LoadScene(2);
                 break;
-            case "Boot":
+            case "Stocherkahnversenken":
                 SceneManager.LoadScene(3);
                 break;
             case "Baerenfuetterungsspiel":
@@ -94,7 +97,7 @@ public class MainGameManager : MonoBehaviour
             case "Ebarhard_im_Bart":
                 SceneManager.LoadScene(5);
                 break;
-            case "FlowerPlucking":
+            case "Blumen_sammeln":
                 SceneManager.LoadScene(6);
                 break;
             case "Schlossspiel":
@@ -110,6 +113,12 @@ public class MainGameManager : MonoBehaviour
                 print("Minigame Augustusspiel");
                 PlayerPrefs.SetString("MGameState", "won");
                 SceneManager.LoadScene(1);
+                break;
+            case "Skulpturen":
+                SceneManager.LoadScene(10);
+                break;
+            case "WWM-Quiz":
+                SceneManager.LoadScene(7);
                 break;
 
             default: break;
