@@ -67,6 +67,12 @@ public class ChapterManager : MonoBehaviour
         if (SelectedChapter >= Chapters.Count)
             return;
 
+        if(mgm.GlobalLocationManager.GetCurrentLocation().Distance(Chapters[SelectedChapter].location) > 0.1f)
+        {
+            print("Too Far away");
+            return;
+        }
+
         string won = PlayerPrefs.GetString("MGameState");
 
         if (won.Equals("won"))

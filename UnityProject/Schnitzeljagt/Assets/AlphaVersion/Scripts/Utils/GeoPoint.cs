@@ -8,6 +8,13 @@ public class GeoPoint
     public double Longitude;
     public double Altitude;
 
+    public GeoPoint()
+    {
+        Latitude = 0;
+        Longitude = 0;
+        Altitude = 0;
+    }
+
     public GeoPoint(LocationInfo locInfo)
     {
         Latitude = locInfo.latitude;

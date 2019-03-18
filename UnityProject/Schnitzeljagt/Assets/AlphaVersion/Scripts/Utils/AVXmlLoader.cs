@@ -112,7 +112,7 @@ public class AVXmlLoader : MonoBehaviour
     void ParseChapter(XmlNode chptNode)
     {
         //ToDo: ChapterManager set Chapter
-
+        GeoPoint location = new GeoPoint();
         Dictionary<int, PlainText> pTexts = new Dictionary<int, PlainText>();
         Dictionary<int, Event> events = new Dictionary<int, Event>();
         Dictionary<int, MiniGame> mGames = new Dictionary<int, MiniGame>();
@@ -121,6 +121,29 @@ public class AVXmlLoader : MonoBehaviour
 
         foreach (XmlNode node in chptNode.ChildNodes)
         {
+            if(node.Name == "geopunkt")
+            {
+                XmlNode longitude = null;
+                XmlNode latitude = null;
+                XmlNode altitude = null;
+
+                foreach (XmlNode geoChild in node.ChildNodes)
+                {
+                    if (geoChild.Name.Equals("Latitude"))
+                        latitude = geoChild;
+                    else if (geoChild.Name.Equals("Longitude"))
+                        longitude = geoChild;
+                    else if (geoChild.Name.Equals("Altitude"))
+                        altitude = geoChild;
+                }
+
+                double lat = double.Parse(latitude.InnerText);
+                double lon = double.Parse(longitude.InnerText);
+                double alt = double.Parse(altitude.InnerText);
+                location.Latitude = lat;
+                location.Longitude = lon;
+                location.Altitude = alt;
+            }
             if (node.Name == "dialog")
             {
                 dialog = node;
@@ -152,6 +175,10 @@ public class AVXmlLoader : MonoBehaviour
         cpt.pTexts = pTexts;
         cpt.events = events;
         cpt.mGame = mGames;
+        cpt.location = location;
+        print(location.Latitude);
+        print(location.Longitude);
+        print(location.Altitude);
         mgm.ChapterManager.AddChapter(cpt);
 
     }

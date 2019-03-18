@@ -44,7 +44,7 @@ public class MainGameManager : MonoBehaviour
     {
         if (AVInputHandler.PointerDown() && AVInputHandler.PointerPosition().y > 600 && AVInputHandler.PointerPosition().y < 1600)
         {
-
+            
             ChapterManager.Progress();
         }
     }
@@ -80,9 +80,6 @@ public class MainGameManager : MonoBehaviour
 
     public void StartMiniGame(string mID)
     {
-
-        PlayerPrefs.SetString("MGameState", "won");
-        return;
         switch (mID)
         {
             case "Wortschatz":
